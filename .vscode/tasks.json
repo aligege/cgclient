@@ -9,7 +9,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\build\\debug\\cgclient.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
