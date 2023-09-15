@@ -2,7 +2,7 @@
     "configurations": [
       {
         "name": "GCC",
-        "includePath": ["${workspaceFolder}/**"],
+        "includePath": ["${workspaceFolder}/**","${workspaceFolder}/include/**","${workspaceFolder}/lib/**"],
         "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
         "windowsSdkVersion": "10.0.22000.0",
         "compilerPath": "C:\\msys64\\ucrt64\\bin\\g++.exe",
