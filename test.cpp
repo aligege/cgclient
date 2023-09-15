@@ -62,6 +62,7 @@ int main() {
 		//执行被触发的事件
 		glfwPollEvents();
 	}
+
 	return 0;
 }
 
