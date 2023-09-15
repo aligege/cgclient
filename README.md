@@ -1,2 +1,2 @@
 # cgclient
-cgclient gameengine typescript
+cgclient game engine typescript
