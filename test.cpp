@@ -1,6 +1,6 @@
 #include<iostream>
 
-int main()
+int main1()
 {
     std::cout<<"test"<<std::endl;
 }
