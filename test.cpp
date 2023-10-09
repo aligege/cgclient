@@ -2,6 +2,7 @@
 #include<glad/glad.h> //glad的引入必须要在glfw的上面
 #include<GLFW/glfw3.h>
 #include<iostream>
+#include<v8tool.h>
 
 using namespace std;
 
@@ -17,6 +18,8 @@ void processInput(GLFWwindow*);
 void renderOrder();
 
 int main() {
+	int argc = 0;
+	char** argv = nullptr;
 	cout << "opengl progaming start......" << "\n";
 	//函数库的初始化
 	glfwInit();
