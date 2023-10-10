@@ -7902,7 +7902,7 @@ using JitCodeEventHandler = void (*)(const JitCodeEvent* event);
  */
 #if defined(V8_OS_WIN)
 using UnhandledExceptionCallback =
-    int (*)(_EXCEPTION_POINTERS* exception_pointers);
+    int (*)(char* exception_pointers);
 #endif
 
 /**

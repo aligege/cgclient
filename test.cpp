@@ -1,6 +1,6 @@
 
 #include<glad/glad.h> //glad的引入必须要在glfw的上面
-#include<GLFW/glfw3.h>
+#include<glfw/glfw3.h>
 #include<iostream>
 #include<v8tool.h>
 
@@ -20,6 +20,10 @@ void renderOrder();
 int main() {
 	int argc = 0;
 	char** argv = nullptr;
+	v8::Isolate::CreateParams create_params;
+	auto isolate = v8::Isolate::New(create_params);
+	auto platform = v8::platform::NewDefaultPlatform().release();
+	v8tool::RunMain(isolate, platform, "test.js");
 	cout << "opengl progaming start......" << "\n";
 	//函数库的初始化
 	glfwInit();

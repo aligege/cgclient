@@ -15,21 +15,17 @@ v8::Local<v8::Context> v8tool::CreateContext(v8::Isolate *isolate)
     return v8::Context::New(isolate, NULL, global);
 }
 // 这里就是用于执行命令行的文件的功能
-int v8tool::RunMain(v8::Isolate *isolate, v8::Platform *platform, int argc,
-                    char *argv[])
+int v8tool::RunMain(v8::Isolate *isolate, v8::Platform *platform, const char* file)
 {
-    // 这里取出了命令行的第二个参数，为什么是第二个？
-    // ./zy_node test.js 因为第一个是它本身啊
-    const char* str = argv[1];
     // 将字符串转成v8的类型
     v8::Local<v8::String> file_name =
-        v8::String::NewFromUtf8(isolate, str, v8::NewStringType::kNormal)
+        v8::String::NewFromUtf8(isolate, file, v8::NewStringType::kNormal)
             .ToLocalChecked();
     // 定义js文件内容的变量
     v8::Local<v8::String> source;
     // 用ReadCommandFile读取文件到source，并判断是否读取异常
-    if (!ReadCommandFile(isolate, str).ToLocal(&source)) {
-        fprintf(stderr, "Error reading '%s'\n", str);
+    if (!ReadCommandFile(isolate, file).ToLocal(&source)) {
+        fprintf(stderr, "Error reading '%s'\n", file);
         return 0;
     }
     // 开始执行字符串用js引擎，可以直接往下看到ExecuteString方法

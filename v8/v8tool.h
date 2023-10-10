@@ -1,3 +1,5 @@
+#pragma once
+
 #include <v8/v8.h>
 #include <v8/libplatform/libplatform.h>
 #include <assert.h>
@@ -12,8 +14,7 @@ public:
     // 这里就是一个创建上下问的方法，我只需要一个上下文，你可以简单理解为定义全局变量
     static v8::Local<v8::Context> CreateContext(v8::Isolate *isolate);
     // 这里就是用于执行命令行的文件的功能
-    static int RunMain(v8::Isolate *isolate, v8::Platform *platform, int argc,
-                       char *argv[]);
+    static int RunMain(v8::Isolate *isolate, v8::Platform *platform, const char* file);
     // 用于执行js字符串的功能
     static bool ExecuteString(v8::Isolate *isolate, v8::Local<v8::String> source,
                               v8::Local<v8::Value> name, bool print_result,
