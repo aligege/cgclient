@@ -15,6 +15,7 @@
                 "-g",
                 "${workspaceFolder}/*.cpp",
                 "${workspaceFolder}\\lib\\GLFW\\**.a",
+                "${workspaceFolder}\\lib\\v8\\**.a",
                 "${workspaceFolder}\\lib\\**.c",
                 "-L",
                 "${workspaceFolder}\\lib\\v8",
