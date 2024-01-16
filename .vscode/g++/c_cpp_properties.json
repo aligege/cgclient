@@ -5,6 +5,7 @@
       "includePath": [
         "${workspaceFolder}/**",
         "${workspaceFolder}/include/**",
+        "${workspaceFolder}/third_party/**",
         "${workspaceFolder}/lib/**"
       ],
       "defines": [

@@ -9,7 +9,7 @@ static int width = 800;
 //窗口高度
 static int height = 600;
 //窗口的名字
-static char  window_name[] = "opengl window";
+static char  window_name[] = "cgclient";
 
 void framebuffer_size_callback(GLFWwindow*,int,int);
 void processInput(GLFWwindow*);
@@ -26,10 +26,6 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	//设定opengl为核心模式
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	//苹果的系统下需要进行兼容的设置
-#ifdef _apple_
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
 	//创建窗口对象
 	GLFWwindow* window = glfwCreateWindow(width, height, window_name, NULL, NULL);
 	if (window == NULL) {
