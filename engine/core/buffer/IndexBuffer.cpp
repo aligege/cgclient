@@ -12,7 +12,7 @@ IndexBuffer::IndexBuffer(): Buffer(){
 
     type = BufferType::INDEX_BUFFER;
 
-    data = &vectorBuffer[0];
+    data = vectorBuffer.data();
 }
 
 IndexBuffer::~IndexBuffer(){
@@ -22,7 +22,7 @@ IndexBuffer::~IndexBuffer(){
 IndexBuffer::IndexBuffer(const IndexBuffer& rhs): Buffer(rhs){
     vectorBuffer = rhs.vectorBuffer;
 
-    data = &vectorBuffer[0];
+    data = vectorBuffer.data();
 }
 
 IndexBuffer& IndexBuffer::operator=(const IndexBuffer& rhs){
@@ -30,7 +30,7 @@ IndexBuffer& IndexBuffer::operator=(const IndexBuffer& rhs){
 
     vectorBuffer = rhs.vectorBuffer;
 
-    data = &vectorBuffer[0];
+    data = vectorBuffer.data();
 
     return *this;
 }
@@ -43,10 +43,10 @@ void IndexBuffer::createIndexAttribute(){
 bool IndexBuffer::resize(size_t pos) {
     Buffer::resize(pos);
 
-    if (pos >= vectorBuffer.size()) {
+    if (pos > vectorBuffer.size()) {
         vectorBuffer.resize(pos);
 
-        data = &vectorBuffer[0];
+        data = vectorBuffer.data();
         size = vectorBuffer.size();
     }
 

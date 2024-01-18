@@ -12,7 +12,7 @@ InterleavedBuffer::InterleavedBuffer(): Buffer(){
     vectorBuffer.clear();
     vertexSize = 0;
 
-    data = &vectorBuffer[0];
+    data = vectorBuffer.data();
 }
 
 InterleavedBuffer::~InterleavedBuffer(){
@@ -23,7 +23,7 @@ InterleavedBuffer::InterleavedBuffer(const InterleavedBuffer& rhs): Buffer(rhs){
     vectorBuffer = rhs.vectorBuffer;
     vertexSize = rhs.vertexSize;
 
-    data = &vectorBuffer[0];
+    data = vectorBuffer.data();
 }
 
 InterleavedBuffer& InterleavedBuffer::operator=(const InterleavedBuffer& rhs){
@@ -32,7 +32,7 @@ InterleavedBuffer& InterleavedBuffer::operator=(const InterleavedBuffer& rhs){
     vectorBuffer = rhs.vectorBuffer;
     vertexSize = rhs.vertexSize;
 
-    data = &vectorBuffer[0];
+    data = vectorBuffer.data();
 
     return *this;
 }
@@ -40,10 +40,10 @@ InterleavedBuffer& InterleavedBuffer::operator=(const InterleavedBuffer& rhs){
 bool InterleavedBuffer::resize(size_t pos) {
     Buffer::resize(pos);
 
-    if (pos >= vectorBuffer.size()) {
+    if (pos > vectorBuffer.size()) {
         vectorBuffer.resize(pos);
 
-        data = &vectorBuffer[0];
+        data = vectorBuffer.data();
         size = vectorBuffer.size();
     }
 
