@@ -10,7 +10,7 @@ if(NOT SUPERNOVA_ROOT)
     set(SUPERNOVA_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 if (NOT EXISTS "${SUPERNOVA_ROOT}")
-    message(FATAL_ERROR "Can't find Supernova root directory: ${SUPERNOVA_ROOT}")
+    message(FATAL_ERROR "Can't find supernova root directory: ${SUPERNOVA_ROOT}")
 endif()
 file(TO_CMAKE_PATH ${SUPERNOVA_ROOT} SUPERNOVA_ROOT)
 
