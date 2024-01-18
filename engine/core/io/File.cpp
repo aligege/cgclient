@@ -75,6 +75,8 @@ unsigned int File::open(const char *aFilename, bool write){
     if (!aFilename)
         return FileErrors::INVALID_PARAMETER;
     std::string systemPath = FileData::getSystemPath(aFilename);
+    //todo 好像么发读取相对路径不知道为啥，暂时这样写死
+    systemPath="F:/batgame/cgclient/build/Debug/"+systemPath;
     if (!write)
         fileHandle = System::instance().platformFopen(systemPath.c_str(), "rb");
     else{
