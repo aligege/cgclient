@@ -31,7 +31,7 @@ class BPLayerInterfaceImpl;
 class ObjectVsBroadPhaseLayerFilterImpl;
 class ObjectLayerPairFilterImpl;
 
-namespace Supernova{
+namespace cg{
 
 	class Box2DContactListener;
 	class Box2DContactFilter;

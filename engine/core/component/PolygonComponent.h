@@ -5,7 +5,7 @@
 #ifndef POLYGON_COMPONENT_H
 #define POLYGON_COMPONENT_H
 
-namespace Supernova{
+namespace cg{
 
     struct PolygonPoint{
         Vector3 position;

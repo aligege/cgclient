@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace Supernova {
+namespace cg {
 
     class UniqueToken {
     private:

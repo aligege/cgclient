@@ -7,7 +7,7 @@
 
 #include "UILayout.h"
 
-namespace Supernova{
+namespace cg{
     class Polygon: public UILayout{
 
     public:

@@ -27,7 +27,7 @@
 #endif
 #endif
 
-using namespace Supernova;
+using namespace cg;
 
 shaders_t& ShaderPool::getMap(){
     //To prevent similar problem of static init fiasco but on deinitialization

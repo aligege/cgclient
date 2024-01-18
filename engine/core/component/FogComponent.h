@@ -3,7 +3,7 @@
 
 #include "util/Color.h"
 
-namespace Supernova{
+namespace cg{
 
     enum class FogType{
         LINEAR,

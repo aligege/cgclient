@@ -4,7 +4,7 @@
 #include "math/Rect.h"
 #include "sokol/SokolScene.h"
 
-namespace Supernova{
+namespace cg{
     class SceneRender{        
     public:
         //***Backend***

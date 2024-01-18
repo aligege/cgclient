@@ -8,7 +8,7 @@
 #include "util/Color.h"
 #include "util/Angle.h"
 
-using namespace Supernova;
+using namespace cg;
 
 
 ActionSystem::ActionSystem(Scene* scene): SubSystem(scene){

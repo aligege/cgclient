@@ -2,7 +2,7 @@
 
 #include "Matrix3.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Plane::Plane () {
     normal = Vector3::ZERO;

@@ -13,7 +13,7 @@ namespace SoLoud{
 	class Soloud;
 }
 
-namespace Supernova{
+namespace cg{
 
 	class AudioSystem : public SubSystem {
 

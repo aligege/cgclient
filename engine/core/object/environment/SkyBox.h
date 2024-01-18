@@ -7,7 +7,7 @@
 
 #include "object/EntityHandle.h"
 
-namespace Supernova{
+namespace cg{
     class SkyBox: public EntityHandle{
 
     public:

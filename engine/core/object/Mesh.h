@@ -9,7 +9,7 @@
 #include "buffer/InterleavedBuffer.h"
 #include "buffer/IndexBuffer.h"
 
-namespace Supernova{
+namespace cg{
 
     class Mesh: public Object{
     public:

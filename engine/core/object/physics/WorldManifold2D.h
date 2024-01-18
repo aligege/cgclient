@@ -9,7 +9,7 @@
 
 class b2WorldManifold;
 
-namespace Supernova{
+namespace cg{
 
     class WorldManifold2D{
         private:

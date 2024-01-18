@@ -3,7 +3,7 @@
 
 #include "Engine.h"
 
-namespace Supernova{
+namespace cg{
 
     struct MorphTracksComponent{
         std::vector<std::vector<float>> values;

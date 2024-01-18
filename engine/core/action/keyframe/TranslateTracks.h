@@ -7,7 +7,7 @@
 
 #include "action/Action.h"
 
-namespace Supernova{
+namespace cg{
     class TranslateTracks: public Action{
 
     public:

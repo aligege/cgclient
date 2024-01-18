@@ -7,7 +7,7 @@
 
 #include "object/EntityHandle.h"
 
-namespace Supernova{
+namespace cg{
     class Action: public EntityHandle{
     public:
         Action(Scene* scene);

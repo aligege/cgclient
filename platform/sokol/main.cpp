@@ -7,12 +7,12 @@
 #include "sokol_glue.h"
 
 void sokol_init(void) {
-    Supernova::Engine::systemViewLoaded();
-    Supernova::Engine::systemViewChanged();
+    cg::Engine::systemViewLoaded();
+    cg::Engine::systemViewChanged();
 }
 
 void sokol_frame(void) {
-    Supernova::Engine::systemDraw();
+    cg::Engine::systemDraw();
 }
 
 int convMouseButtom(sapp_mousebutton mouse_button){
@@ -28,46 +28,46 @@ int convMouseButtom(sapp_mousebutton mouse_button){
 
 static void sokol_event(const sapp_event* e) {
     if (e->type == SAPP_EVENTTYPE_RESIZED)
-        Supernova::Engine::systemViewChanged();
+        cg::Engine::systemViewChanged();
     else if (e->type == SAPP_EVENTTYPE_CHAR)
-        Supernova::Engine::systemCharInput(e->char_code);
+        cg::Engine::systemCharInput(e->char_code);
     else if (e->type == SAPP_EVENTTYPE_KEY_DOWN){
         if (e->key_code == SAPP_KEYCODE_TAB)
-            Supernova::Engine::systemCharInput('\t');
+            cg::Engine::systemCharInput('\t');
         if (e->key_code == SAPP_KEYCODE_BACKSPACE)
-            Supernova::Engine::systemCharInput('\b');
+            cg::Engine::systemCharInput('\b');
         if (e->key_code == SAPP_KEYCODE_ENTER)
-            Supernova::Engine::systemCharInput('\r');
+            cg::Engine::systemCharInput('\r');
         if (e->key_code == SAPP_KEYCODE_ESCAPE)
-            Supernova::Engine::systemCharInput('\e');
+            cg::Engine::systemCharInput('\e');
         //Use same keycode of GLFW
-        Supernova::Engine::systemKeyDown(e->key_code, e->key_repeat, e->modifiers);
+        cg::Engine::systemKeyDown(e->key_code, e->key_repeat, e->modifiers);
     }else if (e->type == SAPP_EVENTTYPE_KEY_UP)
         //Use same keycode of GLFW
-        Supernova::Engine::systemKeyUp(e->key_code, e->key_repeat, e->modifiers);
+        cg::Engine::systemKeyUp(e->key_code, e->key_repeat, e->modifiers);
     else if (e->type == SAPP_EVENTTYPE_SUSPENDED)
-        Supernova::Engine::systemPause();
+        cg::Engine::systemPause();
     else if (e->type == SAPP_EVENTTYPE_RESUMED)
-        Supernova::Engine::systemResume();  
+        cg::Engine::systemResume();  
     else if (e->type == SAPP_EVENTTYPE_MOUSE_UP)
-        Supernova::Engine::systemMouseUp(convMouseButtom(e->mouse_button), e->mouse_x, e->mouse_y, e->modifiers);  
+        cg::Engine::systemMouseUp(convMouseButtom(e->mouse_button), e->mouse_x, e->mouse_y, e->modifiers);  
     else if (e->type == SAPP_EVENTTYPE_MOUSE_DOWN)
-        Supernova::Engine::systemMouseDown(convMouseButtom(e->mouse_button), e->mouse_x, e->mouse_y, e->modifiers);
+        cg::Engine::systemMouseDown(convMouseButtom(e->mouse_button), e->mouse_x, e->mouse_y, e->modifiers);
     else if (e->type == SAPP_EVENTTYPE_MOUSE_UP)
-        Supernova::Engine::systemMouseUp(convMouseButtom(e->mouse_button), e->mouse_x, e->mouse_y, e->modifiers);
+        cg::Engine::systemMouseUp(convMouseButtom(e->mouse_button), e->mouse_x, e->mouse_y, e->modifiers);
     else if (e->type == SAPP_EVENTTYPE_MOUSE_MOVE)
-        Supernova::Engine::systemMouseMove(e->mouse_x, e->mouse_y, e->modifiers);
+        cg::Engine::systemMouseMove(e->mouse_x, e->mouse_y, e->modifiers);
     else if (e->type == SAPP_EVENTTYPE_MOUSE_SCROLL)
-        Supernova::Engine::systemMouseScroll(e->scroll_x, e->scroll_y, e->modifiers);
+        cg::Engine::systemMouseScroll(e->scroll_x, e->scroll_y, e->modifiers);
     else if (e->type == SAPP_EVENTTYPE_MOUSE_ENTER)
-        Supernova::Engine::systemMouseEnter();
+        cg::Engine::systemMouseEnter();
     else if (e->type == SAPP_EVENTTYPE_MOUSE_LEAVE)
-        Supernova::Engine::systemMouseLeave();
+        cg::Engine::systemMouseLeave();
 }
 
 void sokol_cleanup(void) {
-    Supernova::Engine::systemViewDestroyed();
-    Supernova::Engine::systemShutdown();
+    cg::Engine::systemViewDestroyed();
+    cg::Engine::systemShutdown();
 }
 
 sapp_desc sokol_main(int argc, char* argv[]) {
@@ -85,7 +85,7 @@ sapp_desc sokol_main(int argc, char* argv[]) {
     app_desc.sample_count = 4;
     app_desc.window_title = "Supernova";
 
-    Supernova::Engine::systemInit(argc, argv);
+    cg::Engine::systemInit(argc, argv);
 
     return app_desc;
 }

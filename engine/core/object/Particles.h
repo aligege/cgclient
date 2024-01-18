@@ -8,7 +8,7 @@
 #include "Object.h"
 #include "buffer/ExternalBuffer.h"
 
-namespace Supernova{
+namespace cg{
 
     class Particles: public Object{
     public:

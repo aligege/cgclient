@@ -7,7 +7,7 @@
 #include "SokolCmdQueue.h"
 #include "Engine.h"
 
-using namespace Supernova;
+using namespace cg;
 
 SokolBuffer::SokolBuffer(){
     buffer.id = SG_INVALID_ID;

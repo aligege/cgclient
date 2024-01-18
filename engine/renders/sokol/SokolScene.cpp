@@ -9,7 +9,7 @@
 
 #include "sokol_gfx.h"
 
-using namespace Supernova;
+using namespace cg;
 
 SokolScene::SokolScene(){
     pass_action = {0};

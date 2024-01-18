@@ -6,7 +6,7 @@
 
 #include "sokol/SokolObject.h"
 
-namespace Supernova {
+namespace cg {
 
     class ObjectRender{
 

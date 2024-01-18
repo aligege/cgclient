@@ -5,7 +5,7 @@
 #include "IndexBuffer.h"
 #include "render/ObjectRender.h"
 
-using namespace Supernova;
+using namespace cg;
 
 IndexBuffer::IndexBuffer(): Buffer(){
     createIndexAttribute();

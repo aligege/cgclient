@@ -7,7 +7,7 @@
 #include "Engine.h"
 #include "buffer/ExternalBuffer.h"
 
-namespace Supernova{
+namespace cg{
 
     struct ParticleData{
         Vector3 position = Vector3(0,0,0);

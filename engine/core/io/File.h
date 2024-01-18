@@ -9,7 +9,7 @@
 
 #include "FileData.h"
 
-namespace Supernova {
+namespace cg {
 
     class File: public FileData {
     protected:

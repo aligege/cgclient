@@ -15,7 +15,7 @@
 #include "util/StringUtils.h"
 #include "pool/FontPool.h"
 
-using namespace Supernova;
+using namespace cg;
 
 
 UISystem::UISystem(Scene* scene): SubSystem(scene){

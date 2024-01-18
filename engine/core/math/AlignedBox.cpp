@@ -3,7 +3,7 @@
 #include "Plane.h"
 #include "Log.h"
 
-using namespace Supernova;
+using namespace cg;
 
 AlignedBox::AlignedBox()
         : mMinimum(Vector3::ZERO), mMaximum(Vector3::UNIT_SCALE), mCorners(0) {

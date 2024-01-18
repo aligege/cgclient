@@ -5,7 +5,7 @@
 #include "ParticlesAnimation.h"
 #include "Ease.h"
 
-using namespace Supernova;
+using namespace cg;
 
 ParticlesAnimation::ParticlesAnimation(Scene* scene): Action(scene){
     addComponent<ParticlesAnimationComponent>({});

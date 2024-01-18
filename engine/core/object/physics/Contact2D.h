@@ -13,7 +13,7 @@
 class b2Contact;
 class b2Manifold;
 
-namespace Supernova{
+namespace cg{
 
     class Contact2D{
     private:

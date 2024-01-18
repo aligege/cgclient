@@ -11,7 +11,7 @@
 
 namespace tinygltf {class Model;}
 
-namespace Supernova{
+namespace cg{
 
     struct ModelComponent{
         tinygltf::Model* gltfModel = NULL;

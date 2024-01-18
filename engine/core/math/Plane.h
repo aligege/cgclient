@@ -4,7 +4,7 @@
 #include "Vector3.h"
 #include "AlignedBox.h"
 
-namespace Supernova{
+namespace cg{
     
     class Plane{
 

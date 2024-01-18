@@ -8,7 +8,7 @@
 
 typedef struct lua_State lua_State;
 
-namespace Supernova{
+namespace cg{
 
     // the function wrapper class
     template <typename Ret>

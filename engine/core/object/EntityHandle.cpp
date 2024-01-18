@@ -4,7 +4,7 @@
 
 #include "EntityHandle.h"
 
-using namespace Supernova;
+using namespace cg;
 
 EntityHandle::EntityHandle(Scene* scene){
     this->scene = scene;

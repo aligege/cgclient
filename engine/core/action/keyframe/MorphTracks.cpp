@@ -7,7 +7,7 @@
 #include "component/KeyframeTracksComponent.h"
 #include "component/MorphTracksComponent.h"
 
-using namespace Supernova;
+using namespace cg;
 
 MorphTracks::MorphTracks(Scene* scene): Action(scene){
     addComponent<KeyframeTracksComponent>({});

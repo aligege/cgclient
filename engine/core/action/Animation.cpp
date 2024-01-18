@@ -6,7 +6,7 @@
 
 #include "component/AnimationComponent.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Animation::Animation(Scene* scene): Action(scene){
     addComponent<AnimationComponent>({});

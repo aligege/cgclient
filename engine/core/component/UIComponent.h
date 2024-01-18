@@ -11,7 +11,7 @@
 #include "buffer/InterleavedBuffer.h"
 #include "buffer/IndexBuffer.h"
 
-namespace Supernova{
+namespace cg{
 
     struct UIComponent{
         // Render part

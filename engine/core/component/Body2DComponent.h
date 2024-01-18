@@ -9,7 +9,7 @@ class b2Body;
 class b2Shape;
 class b2Fixture;
 
-namespace Supernova{
+namespace cg{
 
     enum class CollisionShape2DType{
         POLYGON,

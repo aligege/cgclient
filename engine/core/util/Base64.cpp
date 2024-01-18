@@ -6,7 +6,7 @@
 
 #include "Base64.h"
 
-using namespace Supernova;
+using namespace cg;
 
 const std::string Base64::base64_chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

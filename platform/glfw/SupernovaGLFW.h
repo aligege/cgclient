@@ -10,7 +10,7 @@
 
 #include "System.h"
 
-class SupernovaGLFW: public Supernova::System{
+class SupernovaGLFW: public cg::System{
 
 private:
 

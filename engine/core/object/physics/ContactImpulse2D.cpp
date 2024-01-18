@@ -6,7 +6,7 @@
 
 #include "box2d.h"
 
-using namespace Supernova;
+using namespace cg;
 
 ContactImpulse2D::ContactImpulse2D(const b2ContactImpulse* contactImpulse){
     this->contactImpulse = contactImpulse;

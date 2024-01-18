@@ -4,7 +4,7 @@
 #include <emscripten/html5.h>
 #include "System.h"
 
-class SupernovaWeb: public Supernova::System{
+class SupernovaWeb: public cg::System{
 
 private:
 

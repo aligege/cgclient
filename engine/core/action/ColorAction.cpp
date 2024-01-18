@@ -5,7 +5,7 @@
 #include "ColorAction.h"
 #include "util/Color.h"
 
-using namespace Supernova;
+using namespace cg;
 
 ColorAction::ColorAction(Scene* scene): TimedAction(scene){
     addComponent<ColorActionComponent>({});

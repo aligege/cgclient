@@ -9,7 +9,7 @@
 #include "ShaderData.h"
 #include "io/FileData.h"
 
-namespace Supernova {
+namespace cg {
 
     class SBSReader {
     private:

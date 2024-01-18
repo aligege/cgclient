@@ -8,7 +8,7 @@
 #include "object/EntityHandle.h"
 #include "component/FogComponent.h"
 
-namespace Supernova{
+namespace cg{
 
     class Fog: public EntityHandle {
 

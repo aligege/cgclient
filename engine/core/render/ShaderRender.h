@@ -8,7 +8,7 @@
 #include "Render.h"
 #include "sokol/SokolShader.h"
 
-namespace Supernova{
+namespace cg{
     class ShaderRender{
 
     private:

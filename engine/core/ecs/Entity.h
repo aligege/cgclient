@@ -3,7 +3,7 @@
 
 #define NULL_ENTITY 0
 
-namespace Supernova{
+namespace cg{
 
     using Entity = unsigned;
 

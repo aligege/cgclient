@@ -6,7 +6,7 @@
 #include "Object.h"
 #include "component/AudioComponent.h"
 
-namespace Supernova {
+namespace cg {
 
     class Audio: public Object{
     public:

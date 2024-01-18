@@ -7,7 +7,7 @@
 #include "Jolt/Jolt.h"
 #include "Jolt/Physics/Collision/ContactListener.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Contact3D::Contact3D(Scene* scene, const JPH::ContactManifold* contactManifold, JPH::ContactSettings* contactSettings){
     this->scene = scene;

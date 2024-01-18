@@ -8,7 +8,7 @@
 
 #include <cstring>
 
-using namespace Supernova;
+using namespace cg;
 
 ShaderData::ShaderData(){
 

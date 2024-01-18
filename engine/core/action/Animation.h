@@ -7,7 +7,7 @@
 
 #include "Action.h"
 
-namespace Supernova{
+namespace cg{
     class Animation: public Action{
 
     public:

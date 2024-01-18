@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-namespace Supernova{
+namespace cg{
     class SokolSystem{
 
     public:

@@ -10,7 +10,7 @@
 #include <cstdint>
 #include "render/Render.h"
 
-namespace Supernova {
+namespace cg {
 
     struct ShaderAttr{
         std::string name;

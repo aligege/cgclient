@@ -16,7 +16,7 @@
 #include "render/BufferRender.h"
 
 
-namespace Supernova {
+namespace cg {
 
     class Buffer {
 

@@ -135,7 +135,7 @@ struct sbs_refl_uniform {
 //----------End SBS format---------------
 
 
-using namespace Supernova;
+using namespace cg;
 
 
 SBSReader::SBSReader(){

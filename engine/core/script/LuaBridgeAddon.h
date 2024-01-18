@@ -5,7 +5,7 @@
 #include "Input.h"
 #include "FileData.h"
 
-using namespace Supernova;
+using namespace cg;
 
 namespace luabridge
 {

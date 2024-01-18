@@ -12,7 +12,7 @@
 class b2Body;
 class b2Fixture;
 
-namespace Supernova{
+namespace cg{
 
     class Object;
 

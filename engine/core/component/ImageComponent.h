@@ -5,7 +5,7 @@
 #ifndef IMAGE_COMPONENT_H
 #define IMAGE_COMPONENT_H
 
-namespace Supernova{
+namespace cg{
 
     struct ImageComponent{
         //Nine patch rect

@@ -1,24 +1,24 @@
 cmake_minimum_required(VERSION 3.15)
 
 if(NOT DEFINED APP_NAME)
-   set(APP_NAME supernova-project)
+   set(APP_NAME cgclient)
 endif()
 
 project(${APP_NAME})
 
-if(NOT SUPERNOVA_ROOT)
-    set(SUPERNOVA_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
+if(NOT CG_ROOT)
+    set(CG_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
-if (NOT EXISTS "${SUPERNOVA_ROOT}")
-    message(FATAL_ERROR "Can't find supernova root directory: ${SUPERNOVA_ROOT}")
+if (NOT EXISTS "${CG_ROOT}")
+    message(FATAL_ERROR "Can't find cg root directory: ${CG_ROOT}")
 endif()
-file(TO_CMAKE_PATH ${SUPERNOVA_ROOT} SUPERNOVA_ROOT)
+file(TO_CMAKE_PATH ${CG_ROOT} CG_ROOT)
 
 #add_definitions(-DDISABLE_LUA_BINDINGS)
 #add_definitions(-DNO_LUA_INIT)
 #add_definitions(-DNO_CPP_INIT)
 if(NOT PROJECT_ROOT)
-    set(PROJECT_ROOT ${SUPERNOVA_ROOT}/project)
+    set(PROJECT_ROOT ${CG_ROOT}/project)
 endif()
 if (NOT EXISTS "${PROJECT_ROOT}")
     message(FATAL_ERROR "Can't find project root directory: ${PROJECT_ROOT}")
@@ -95,7 +95,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
 
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
 
-    set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/emscripten)
+    set(PLATFORM_ROOT ${CG_ROOT}/platform/emscripten)
 
     set(EM_PRELOAD_FILES)
 
@@ -156,7 +156,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Android")
         set(IS_ARM ON)
     endif()
 
-    set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/android)
+    set(PLATFORM_ROOT ${CG_ROOT}/platform/android)
 
     list(APPEND PLATFORM_SOURCE
         ${PLATFORM_ROOT}/SupernovaAndroid.cpp
@@ -211,7 +211,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
 
     set(PLATFORM_EXEC_FLAGS WIN32)
 
-    set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/sokol)
+    set(PLATFORM_ROOT ${CG_ROOT}/platform/sokol)
 
     list(APPEND PLATFORM_SOURCE
         ${PLATFORM_ROOT}/SupernovaSokol.cpp
@@ -248,7 +248,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     if (APP_BACKEND STREQUAL "glfw")
         add_definitions("-DSUPERNOVA_GLFW")
 
-        set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/glfw)
+        set(PLATFORM_ROOT ${CG_ROOT}/platform/glfw)
 
         list(APPEND PLATFORM_SOURCE
             ${PLATFORM_ROOT}/SupernovaGLFW.cpp
@@ -261,7 +261,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     else()
         add_definitions("-DSUPERNOVA_SOKOL")
 
-        set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/sokol)
+        set(PLATFORM_ROOT ${CG_ROOT}/platform/sokol)
 
         list(APPEND PLATFORM_SOURCE
             ${PLATFORM_ROOT}/SupernovaSokol.cpp
@@ -290,7 +290,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     if (APP_BACKEND STREQUAL "apple")
         add_definitions("-DSUPERNOVA_APPLE")
 
-        set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/apple)
+        set(PLATFORM_ROOT ${CG_ROOT}/platform/apple)
 
         set(APP_BUNDLE_IDENTIFIER "org.supernovaengine.supernova")
 
@@ -317,7 +317,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
         )
 
         list(APPEND PLATFORM_PROPERTIES
-            MACOSX_BUNDLE_INFO_PLIST "${SUPERNOVA_ROOT}/workspaces/xcode/macos/Info.plist"
+            MACOSX_BUNDLE_INFO_PLIST "${CG_ROOT}/workspaces/xcode/macos/Info.plist"
             XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC "YES"
             #XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${PLATFORM_ROOT}/macos/Supernova_macOS.entitlements" # error EXC_BAD_INSTRUCTION
         )
@@ -332,7 +332,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
         if (APP_BACKEND STREQUAL "glfw")
             add_definitions("-DSUPERNOVA_GLFW")
 
-            set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/glfw)
+            set(PLATFORM_ROOT ${CG_ROOT}/platform/glfw)
 
             list(APPEND PLATFORM_SOURCE
                 ${PLATFORM_ROOT}/SupernovaGLFW.cpp
@@ -345,7 +345,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
         else()
             add_definitions("-DSUPERNOVA_SOKOL")
 
-            set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/sokol)
+            set(PLATFORM_ROOT ${CG_ROOT}/platform/sokol)
 
             list(APPEND PLATFORM_SOURCE
                 ${PLATFORM_ROOT}/SupernovaSokol.cpp
@@ -364,7 +364,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
 
     add_definitions("-DWITH_MINIAUDIO") # For SoLoud
 
-    set(PLATFORM_ROOT ${SUPERNOVA_ROOT}/platform/apple)
+    set(PLATFORM_ROOT ${CG_ROOT}/platform/apple)
 
     set(APP_BUNDLE_IDENTIFIER "org.supernovaengine.supernova")
 
@@ -421,35 +421,35 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
 
     list(APPEND PLATFORM_PROPERTIES
         XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER ${APP_BUNDLE_IDENTIFIER}
-        MACOSX_BUNDLE_INFO_PLIST "${SUPERNOVA_ROOT}/workspaces/xcode/ios/Info.plist"
+        MACOSX_BUNDLE_INFO_PLIST "${CG_ROOT}/workspaces/xcode/ios/Info.plist"
         XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC "YES"
     )
 
 endif()
 
 include_directories (${PLATFORM_ROOT})
-include_directories (${SUPERNOVA_ROOT}/engine/libs)
-include_directories (${SUPERNOVA_ROOT}/engine/libs/sokol)
-include_directories (${SUPERNOVA_ROOT}/engine/libs/lua)
-include_directories (${SUPERNOVA_ROOT}/engine/core)
-include_directories (${SUPERNOVA_ROOT}/engine/core/action)
-include_directories (${SUPERNOVA_ROOT}/engine/core/buffer)
-include_directories (${SUPERNOVA_ROOT}/engine/core/component)
-include_directories (${SUPERNOVA_ROOT}/engine/core/ecs)
-include_directories (${SUPERNOVA_ROOT}/engine/core/io)
-include_directories (${SUPERNOVA_ROOT}/engine/core/math)
-include_directories (${SUPERNOVA_ROOT}/engine/core/object)
-include_directories (${SUPERNOVA_ROOT}/engine/core/object/audio)
-include_directories (${SUPERNOVA_ROOT}/engine/core/object/ui)
-include_directories (${SUPERNOVA_ROOT}/engine/core/object/environment)
-include_directories (${SUPERNOVA_ROOT}/engine/core/object/physics)
-include_directories (${SUPERNOVA_ROOT}/engine/core/script)
-include_directories (${SUPERNOVA_ROOT}/engine/core/subsystem)
-include_directories (${SUPERNOVA_ROOT}/engine/core/texture)
-include_directories (${SUPERNOVA_ROOT}/engine/core/util)
-include_directories (${SUPERNOVA_ROOT}/engine/renders)
+include_directories (${CG_ROOT}/engine/libs)
+include_directories (${CG_ROOT}/engine/libs/sokol)
+include_directories (${CG_ROOT}/engine/libs/lua)
+include_directories (${CG_ROOT}/engine/core)
+include_directories (${CG_ROOT}/engine/core/action)
+include_directories (${CG_ROOT}/engine/core/buffer)
+include_directories (${CG_ROOT}/engine/core/component)
+include_directories (${CG_ROOT}/engine/core/ecs)
+include_directories (${CG_ROOT}/engine/core/io)
+include_directories (${CG_ROOT}/engine/core/math)
+include_directories (${CG_ROOT}/engine/core/object)
+include_directories (${CG_ROOT}/engine/core/object/audio)
+include_directories (${CG_ROOT}/engine/core/object/ui)
+include_directories (${CG_ROOT}/engine/core/object/environment)
+include_directories (${CG_ROOT}/engine/core/object/physics)
+include_directories (${CG_ROOT}/engine/core/script)
+include_directories (${CG_ROOT}/engine/core/subsystem)
+include_directories (${CG_ROOT}/engine/core/texture)
+include_directories (${CG_ROOT}/engine/core/util)
+include_directories (${CG_ROOT}/engine/renders)
 
-add_subdirectory(${SUPERNOVA_ROOT}/engine)
+add_subdirectory(${CG_ROOT}/engine)
 
 include_directories (${PROJECT_ROOT})
 file(GLOB_RECURSE PROJECT_SOURCE ${PROJECT_ROOT}/*.cpp)

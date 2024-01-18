@@ -2,7 +2,7 @@
 
 #include "Vector3.h"
 
-using namespace Supernova;
+using namespace cg;
 
 const Vector2 Vector2::ZERO( 0, 0);
 
@@ -127,7 +127,7 @@ Vector2 Vector2::operator - () const{
 
 
 Vector2 operator * ( const float fScalar, const Vector2& rkVector ){
-    return Supernova::Vector2(
+    return cg::Vector2(
                    fScalar * rkVector.x,
                    fScalar * rkVector.y);
 }

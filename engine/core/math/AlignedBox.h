@@ -4,7 +4,7 @@
 #include "Vector3.h"
 #include "Matrix4.h"
 
-namespace Supernova{
+namespace cg{
 
     class Plane;
     

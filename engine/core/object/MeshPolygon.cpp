@@ -9,7 +9,7 @@
 #include "component/MeshPolygonComponent.h"
 #include "subsystem/MeshSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 MeshPolygon::MeshPolygon(Scene* scene): Mesh(scene){
     addComponent<MeshPolygonComponent>({});

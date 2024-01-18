@@ -117,7 +117,7 @@ public:
 };
 
 
-namespace Supernova{
+namespace cg{
 
 	class JoltActivationListener : public JPH::BodyActivationListener{
 	private:

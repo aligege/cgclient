@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <assert.h>
 
-using namespace Supernova;
+using namespace cg;
 
 Matrix3::Matrix3() {
     identity();

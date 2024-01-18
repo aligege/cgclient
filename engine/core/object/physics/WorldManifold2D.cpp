@@ -7,7 +7,7 @@
 #include "PhysicsSystem.h"
 #include "box2d.h"
 
-using namespace Supernova;
+using namespace cg;
 
 WorldManifold2D::WorldManifold2D(Scene* scene){
     this->scene = scene;

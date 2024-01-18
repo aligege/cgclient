@@ -7,7 +7,7 @@ namespace SoLoud{
     class Wav;
 }
 
-namespace Supernova{
+namespace cg{
 
     enum class AudioState{
         Playing,

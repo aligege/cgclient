@@ -6,7 +6,7 @@
 #include "subsystem/MeshSystem.h"
 #include "subsystem/RenderSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Shape::Shape(Scene* scene): Mesh(scene){
 }

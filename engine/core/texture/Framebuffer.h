@@ -7,7 +7,7 @@
 
 #include "render/FramebufferRender.h"
 
-namespace Supernova{
+namespace cg{
 
     class Framebuffer{
 

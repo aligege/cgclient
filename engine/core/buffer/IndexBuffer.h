@@ -8,7 +8,7 @@
 #include "buffer/Buffer.h"
 #include <vector>
 
-namespace Supernova {
+namespace cg {
 
     class IndexBuffer: public Buffer {
 

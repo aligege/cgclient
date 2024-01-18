@@ -4,7 +4,7 @@
 
 #include "RotationAction.h"
 
-using namespace Supernova;
+using namespace cg;
 
 RotationAction::RotationAction(Scene* scene): TimedAction(scene){
     addComponent<RotationActionComponent>({});

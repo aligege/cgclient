@@ -7,7 +7,7 @@
 
 #include "action/Action.h"
 
-namespace Supernova{
+namespace cg{
     class ScaleTracks: public Action{
 
     public:

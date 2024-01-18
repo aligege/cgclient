@@ -9,7 +9,7 @@
 #include "component/Body3DComponent.h"
 #include "util/JoltPhysicsAux.h"
 
-using namespace Supernova;
+using namespace cg;
 
 JPH::EMotionType getBodyTypeToJolt(BodyType type){
     if (type == BodyType::STATIC){

@@ -1,5 +1,5 @@
 #include "Log.h"
-#define SOKOL_LOG(s) { SOKOL_ASSERT(s); Supernova::Log::error(s); }
+#define SOKOL_LOG(s) { SOKOL_ASSERT(s); cg::Log::error(s); }
 
 #define SOKOL_IMPL
 

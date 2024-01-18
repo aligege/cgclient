@@ -6,7 +6,7 @@
 class b2JointDef;
 class b2Joint;
 
-namespace Supernova{
+namespace cg{
 
     enum class Joint2DType{
         DISTANCE,

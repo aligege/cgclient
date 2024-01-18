@@ -8,7 +8,7 @@
 #include "Action.h"
 #include "Ease.h"
 
-namespace Supernova{
+namespace cg{
     class TimedAction: public Action{
 
     protected:

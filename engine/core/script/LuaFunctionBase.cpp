@@ -18,7 +18,7 @@
 #include "LuaBridge.h"
 #include <stdexcept>
 
-using namespace Supernova;
+using namespace cg;
 
 LuaFunctionBase::LuaFunctionBase(lua_State *vm, const std::string &func): m_vm(vm) {
     // get the function

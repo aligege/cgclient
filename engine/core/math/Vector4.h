@@ -7,16 +7,16 @@
 #include <assert.h>
 #include <math.h>
 
-namespace Supernova { class Vector4; }
-Supernova::Vector4 operator * ( const float fScalar, const Supernova::Vector4& rkVector );
-Supernova::Vector4 operator / ( const float fScalar, const Supernova::Vector4& rkVector );
-Supernova::Vector4 operator + (const Supernova::Vector4& lhs, const float rhs);
-Supernova::Vector4 operator + (const float lhs, const Supernova::Vector4& rhs);
-Supernova::Vector4 operator - (const Supernova::Vector4& lhs, float rhs);
-Supernova::Vector4 operator - (const float lhs, const Supernova::Vector4& rhs);
+namespace cg { class Vector4; }
+cg::Vector4 operator * ( const float fScalar, const cg::Vector4& rkVector );
+cg::Vector4 operator / ( const float fScalar, const cg::Vector4& rkVector );
+cg::Vector4 operator + (const cg::Vector4& lhs, const float rhs);
+cg::Vector4 operator + (const float lhs, const cg::Vector4& rhs);
+cg::Vector4 operator - (const cg::Vector4& lhs, float rhs);
+cg::Vector4 operator - (const float lhs, const cg::Vector4& rhs);
 
 
-namespace Supernova {
+namespace cg {
 
     class Vector4
     {

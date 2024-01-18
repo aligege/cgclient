@@ -17,7 +17,7 @@
 #include <vector>
 #include <memory>
 
-using namespace Supernova;
+using namespace cg;
 
 
 

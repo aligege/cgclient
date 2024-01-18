@@ -4,7 +4,7 @@
 #include "Engine.h"
 #include "math/Vector2.h"
 
-namespace Supernova{
+namespace cg{
 
     class STBText;
 

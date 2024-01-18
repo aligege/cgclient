@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 
-using namespace Supernova;
+using namespace cg;
 
 Ray::Ray(){
 

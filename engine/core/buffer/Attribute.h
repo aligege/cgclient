@@ -9,7 +9,7 @@
 #include <string>
 #include "render/Render.h"
 
-namespace Supernova {
+namespace cg {
 
     class Attribute {
 

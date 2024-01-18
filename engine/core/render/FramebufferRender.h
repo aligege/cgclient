@@ -4,7 +4,7 @@
 #include "Render.h"
 #include "sokol/SokolFramebuffer.h"
 
-namespace Supernova{
+namespace cg{
     class FramebufferRender{
 
     public:

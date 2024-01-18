@@ -2,7 +2,7 @@
 #ifndef angle_h
 #define angle_h
 
-namespace Supernova {
+namespace cg {
 
     class Angle {
     public:

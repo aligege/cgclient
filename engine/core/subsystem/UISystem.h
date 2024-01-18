@@ -18,7 +18,7 @@
 #include "component/Transform.h"
 #include "component/CameraComponent.h"
 
-namespace Supernova{
+namespace cg{
 
 	class UISystem : public SubSystem {
 

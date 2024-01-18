@@ -7,7 +7,7 @@
 #include "ComponentArray.h"
 #include "Log.h"
 
-namespace Supernova {
+namespace cg {
 
 	using ComponentType = unsigned char;
 

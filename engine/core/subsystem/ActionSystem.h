@@ -29,7 +29,7 @@
 #include "component/ScaleTracksComponent.h"
 #include "component/MorphTracksComponent.h"
 
-namespace Supernova{
+namespace cg{
 
 	class ActionSystem : public SubSystem {
 

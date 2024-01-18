@@ -7,7 +7,7 @@
 
 #include "Engine.h"
 
-namespace Supernova{
+namespace cg{
 
     struct ActionFrame{
         float startTime = 0;

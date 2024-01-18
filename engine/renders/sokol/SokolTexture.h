@@ -11,7 +11,7 @@
 
 #include <string>
 
-namespace Supernova{
+namespace cg{
     class SokolTexture{
 
     private:

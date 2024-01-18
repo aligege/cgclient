@@ -7,7 +7,7 @@
 
 #include "render/Render.h"
 
-namespace Supernova {
+namespace cg {
 
     class TextureData {
     private:

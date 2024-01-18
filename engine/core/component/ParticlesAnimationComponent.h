@@ -7,7 +7,7 @@
 
 #include "action/Ease.h"
 
-namespace Supernova{
+namespace cg{
 
     struct ParticleLifeInitializer{
         float minLife = 10;

@@ -8,7 +8,7 @@
 #include "subsystem/MeshSystem.h"
 #include "subsystem/RenderSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Terrain::Terrain(Scene* scene): Object(scene){
     addComponent<TerrainComponent>({});

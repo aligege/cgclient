@@ -4,10 +4,10 @@
 #include "Vector3.h"
 #include "Matrix4.h"
 
-namespace Supernova { class Quaternion; }
-Supernova::Quaternion operator * (float fScalar, const Supernova::Quaternion& rkQ);
+namespace cg { class Quaternion; }
+cg::Quaternion operator * (float fScalar, const cg::Quaternion& rkQ);
 
-namespace Supernova {
+namespace cg {
 
     class Quaternion {
     public:

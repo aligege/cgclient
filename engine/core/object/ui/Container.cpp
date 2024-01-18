@@ -4,7 +4,7 @@
 
 #include "Container.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Container::Container(Scene* scene): UILayout(scene){
     addComponent<UIContainerComponent>({});

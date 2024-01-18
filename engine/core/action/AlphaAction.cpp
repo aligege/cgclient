@@ -4,7 +4,7 @@
 
 #include "AlphaAction.h"
 
-using namespace Supernova;
+using namespace cg;
 
 AlphaAction::AlphaAction(Scene* scene): TimedAction(scene){
     addComponent<AlphaActionComponent>({});

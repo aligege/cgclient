@@ -10,7 +10,7 @@
 
 #include "sokol_gfx.h"
 
-namespace Supernova{
+namespace cg{
     class SokolShader{
 
     private:

@@ -24,7 +24,7 @@ struct MyPlaceholder {};
 template<size_t N>
 struct std::is_placeholder<MyPlaceholder<N>> : public std::integral_constant<size_t, N> {};
 
-namespace Supernova {
+namespace cg {
 
     template<typename T>
     class FunctionSubscribe;

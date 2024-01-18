@@ -4,7 +4,7 @@
 
 #include "Action.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Action::Action(Scene* scene): EntityHandle(scene){
     addComponent<ActionComponent>({});

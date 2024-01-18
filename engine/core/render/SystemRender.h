@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-namespace Supernova{
+namespace cg{
     class SystemRender{        
     public:
         static void setup();

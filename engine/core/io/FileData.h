@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <string>
 
-namespace Supernova {
+namespace cg {
 
     enum FileErrors{
         FILEDATA_OK       = 0,

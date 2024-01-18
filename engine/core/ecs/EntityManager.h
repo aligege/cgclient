@@ -7,7 +7,7 @@
 #include "Signature.h"
 #include "Log.h"
 
-namespace Supernova{
+namespace cg{
 
     class EntityManager {
     private:

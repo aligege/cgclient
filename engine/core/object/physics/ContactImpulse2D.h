@@ -9,7 +9,7 @@
 
 class b2ContactImpulse;
 
-namespace Supernova{
+namespace cg{
 
     class ContactImpulse2D{
     private:

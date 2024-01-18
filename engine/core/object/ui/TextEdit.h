@@ -8,7 +8,7 @@
 #include "Image.h"
 #include "Text.h"
 
-namespace Supernova{
+namespace cg{
     class TextEdit: public Image{
 
     public:

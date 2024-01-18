@@ -11,7 +11,7 @@
 
 namespace tinygltf {class Model;}
 
-namespace Supernova{
+namespace cg{
     class Model: public Mesh{
     public:
         Model(Scene* scene);

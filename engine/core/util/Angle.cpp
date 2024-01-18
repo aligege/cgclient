@@ -5,7 +5,7 @@
 #include <cmath>
 #include <math.h>
 
-using namespace Supernova;
+using namespace cg;
 
 float Angle::radToDefault(float radians){
     if (Engine::isUseDegrees()){

@@ -1,6 +1,6 @@
 #include "Vector3.h"
 
-using namespace Supernova;
+using namespace cg;
 
 const Vector3 Vector3::ZERO( 0, 0, 0 );
 const Vector3 Vector3::UNIT_X( 1, 0, 0 );

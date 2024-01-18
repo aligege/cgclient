@@ -4,7 +4,7 @@
 #include "util/FunctionSubscribe.h"
 #include "math/Rect.h"
 
-namespace Supernova{
+namespace cg{
 
     enum class AnchorPreset{
         NONE,

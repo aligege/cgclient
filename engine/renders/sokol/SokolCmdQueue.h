@@ -19,7 +19,7 @@
 
 // ----------------------------------------------------------------------------------------------------
 
-namespace Supernova {
+namespace cg {
 
 	struct SokolRenderCommand
 	{

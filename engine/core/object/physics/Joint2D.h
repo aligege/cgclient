@@ -7,7 +7,7 @@
 
 #include "EntityHandle.h"
 
-namespace Supernova{
+namespace cg{
 
     class Joint2D: public EntityHandle{
     public:

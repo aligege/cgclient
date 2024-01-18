@@ -9,7 +9,7 @@
 
 #include "sokol_gfx.h"
 
-namespace Supernova{
+namespace cg{
     class SokolBuffer{
 
     private:

@@ -4,7 +4,7 @@
 
 #include "Attribute.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Attribute::Attribute(){
     setDataType(AttributeDataType::FLOAT);

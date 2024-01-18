@@ -12,7 +12,7 @@ namespace JPH{
     class CollideShapeResult;
 }
 
-namespace Supernova{
+namespace cg{
 
     class CollideShapeResult3D{
     private:

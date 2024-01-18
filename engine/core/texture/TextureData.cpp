@@ -20,7 +20,7 @@
 #include "Texture.h"
 #include "Engine.h"
 
-using namespace Supernova;
+using namespace cg;
 
 TextureData::TextureData() {
     this->width = 0;

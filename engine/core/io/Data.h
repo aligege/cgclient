@@ -10,7 +10,7 @@
 #include "FileData.h"
 #include "File.h"
 
-namespace Supernova {
+namespace cg {
 
     class Data: public FileData {
 

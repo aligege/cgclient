@@ -6,7 +6,7 @@
 #include "math/Plane.h"
 #include "texture/Framebuffer.h"
 
-namespace Supernova{
+namespace cg{
 
     enum class CameraType{
         CAMERA_2D,

@@ -7,7 +7,7 @@
 
 #include "UILayout.h"
 
-namespace Supernova{
+namespace cg{
     class Image: public UILayout{
     public:
         Image(Scene* scene);

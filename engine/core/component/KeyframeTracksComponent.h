@@ -3,7 +3,7 @@
 
 #include "Engine.h"
 
-namespace Supernova{
+namespace cg{
 
     struct KeyframeTracksComponent{
         std::vector<float> times;

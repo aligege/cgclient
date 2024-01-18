@@ -6,7 +6,7 @@
 #include "util/Angle.h"
 #include "subsystem/RenderSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Particles::Particles(Scene* scene): Object(scene){
     addComponent<ParticlesComponent>({});

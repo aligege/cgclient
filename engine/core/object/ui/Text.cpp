@@ -5,7 +5,7 @@
 #include "subsystem/RenderSystem.h"
 #include "subsystem/UISystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Text::Text(Scene* scene): UILayout(scene){
     addComponent<UIComponent>({});

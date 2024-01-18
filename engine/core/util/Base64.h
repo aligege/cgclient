@@ -10,7 +10,7 @@
 #include <vector>
 #include <string>
 
-namespace Supernova {
+namespace cg {
     class Base64 {
     private:
         static const std::string base64_chars;

@@ -8,7 +8,7 @@
 #include "Log.h"
 #include <stdlib.h>
 
-using namespace Supernova;
+using namespace cg;
 
 #define USERSETTINGS_ROOT "userSettings"
 #define USERSETTINGS_XML_FILE "data://UserSettings.xml"

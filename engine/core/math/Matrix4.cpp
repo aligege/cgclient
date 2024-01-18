@@ -8,7 +8,7 @@
 #include <iomanip>
 #include "math/Quaternion.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Matrix4::Matrix4(){
     identity();

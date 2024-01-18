@@ -21,12 +21,12 @@ int SupernovaWeb::screenHeight;
 extern "C" {
     EMSCRIPTEN_KEEPALIVE 
     int getScreenWidth() {
-        return Supernova::System::instance().getScreenWidth();
+        return cg::System::instance().getScreenWidth();
     }
 
     EMSCRIPTEN_KEEPALIVE 
     int getScreenHeight() {
-        return Supernova::System::instance().getScreenHeight();
+        return cg::System::instance().getScreenHeight();
     }
 
     EMSCRIPTEN_KEEPALIVE 
@@ -37,7 +37,7 @@ extern "C" {
     EMSCRIPTEN_KEEPALIVE 
     void syncfs_enable_callback(const char* err) {
 	    if (!err || err[0]) {
-		    Supernova::Log::error("Failed to enable IndexedDB: %s", err);
+		    cg::Log::error("Failed to enable IndexedDB: %s", err);
             SupernovaWeb::setEnabledIDB(false);
 	    }else{
             SupernovaWeb::setEnabledIDB(true);
@@ -47,26 +47,26 @@ extern "C" {
     EMSCRIPTEN_KEEPALIVE 
     void syncfs_callback(const char* err) {
 	    if (!err || err[0]) {
-		    Supernova::Log::error("Failed to save in iDB file system: %s", err);
+		    cg::Log::error("Failed to save in iDB file system: %s", err);
 	    }
     }
 
     EMSCRIPTEN_KEEPALIVE 
     void crazygamesad_started_callback() {
-        Supernova::Engine::systemPause();
+        cg::Engine::systemPause();
     }
 
     EMSCRIPTEN_KEEPALIVE 
     void crazygamesad_finished_callback() {
-        Supernova::Engine::systemResume();
+        cg::Engine::systemResume();
     }
 
     EMSCRIPTEN_KEEPALIVE 
     void crazygamesad_error_callback(const char* err) {
 	    if (!err || err[0]) {
-		    Supernova::Log::error("Failed to load CrazyGames ad: %s", err);
+		    cg::Log::error("Failed to load CrazyGames ad: %s", err);
 	    }
-        Supernova::Engine::systemResume();
+        cg::Engine::systemResume();
     }
 }
 
@@ -127,7 +127,7 @@ int SupernovaWeb::init(int argc, char **argv){
 		});
 	);
 
-    Supernova::Engine::systemInit(argc, argv);
+    cg::Engine::systemInit(argc, argv);
 
     EmscriptenWebGLContextAttributes attr;
     emscripten_webgl_init_context_attributes(&attr);
@@ -147,7 +147,7 @@ int SupernovaWeb::init(int argc, char **argv){
 
     SupernovaWeb::screenWidth = sWidth;
     SupernovaWeb::screenHeight = sHeight;
-    Supernova::Engine::systemViewLoaded();
+    cg::Engine::systemViewLoaded();
     changeCanvasSize(sWidth, sHeight);
 
     emscripten_set_main_loop(renderLoop, 0, 1);
@@ -160,7 +160,7 @@ void SupernovaWeb::changeCanvasSize(int width, int height){
 
     SupernovaWeb::screenWidth = width;
     SupernovaWeb::screenHeight = height;
-    Supernova::Engine::systemViewChanged();
+    cg::Engine::systemViewChanged();
 }
 
 bool SupernovaWeb::isFullscreen(){
@@ -197,10 +197,10 @@ bool SupernovaWeb::syncFileSystem(){
 }
 
 void SupernovaWeb::renderLoop(){    
-    Supernova::Engine::systemDraw();
+    cg::Engine::systemDraw();
 
     if (syncWaitTime > 0) {
-		syncWaitTime -= (int)(Supernova::Engine::getDeltatime()*1000);
+		syncWaitTime -= (int)(cg::Engine::getDeltatime()*1000);
 
         if (syncWaitTime <= 0){
             EM_ASM(
@@ -218,7 +218,7 @@ EM_BOOL SupernovaWeb::canvas_resize(int eventType, const void *reserved, void *u
 
     SupernovaWeb::screenWidth = w;
     SupernovaWeb::screenHeight = h;
-    Supernova::Engine::systemViewChanged();
+    cg::Engine::systemViewChanged();
 
     return 0;
 }
@@ -287,14 +287,14 @@ EM_BOOL SupernovaWeb::key_callback(int eventType, const EmscriptenKeyboardEvent 
     if ((!strcmp(key,"Escape"))||(*key=='\e')) skey=8;
 
     if (eventType == EMSCRIPTEN_EVENT_KEYDOWN){
-        Supernova::Engine::systemKeyDown(code, e->repeat, modifiers);
-        if (skey==1) Supernova::Engine::systemCharInput('\t');
-        if (skey==2) Supernova::Engine::systemCharInput('\b');
-        if (skey==4) Supernova::Engine::systemCharInput('\r');
-        if (skey==8) Supernova::Engine::systemCharInput('\e');
+        cg::Engine::systemKeyDown(code, e->repeat, modifiers);
+        if (skey==1) cg::Engine::systemCharInput('\t');
+        if (skey==2) cg::Engine::systemCharInput('\b');
+        if (skey==4) cg::Engine::systemCharInput('\r');
+        if (skey==8) cg::Engine::systemCharInput('\e');
 
     }else if (eventType == EMSCRIPTEN_EVENT_KEYUP){
-        Supernova::Engine::systemKeyUp(code, e->repeat, modifiers);
+        cg::Engine::systemKeyUp(code, e->repeat, modifiers);
 
     }else if (eventType == EMSCRIPTEN_EVENT_KEYPRESS){
         wchar_t cp = toCodepoint(std::string(e->key));
@@ -302,7 +302,7 @@ EM_BOOL SupernovaWeb::key_callback(int eventType, const EmscriptenKeyboardEvent 
         if (cp == 0) cp = e->keyCode;
 
         if (skey == 0 && cp != 0){
-            Supernova::Engine::systemCharInput(cp);
+            cg::Engine::systemCharInput(cp);
         }
     }
 
@@ -325,18 +325,18 @@ EM_BOOL SupernovaWeb::mouse_callback(int eventType, const EmscriptenMouseEvent *
     if (e->altKey) modifiers |= S_MODIFIER_ALT;
     if (e->metaKey) modifiers |= S_MODIFIER_SUPER;
 
-    Supernova::Engine::systemMouseMove(e->targetX, e->targetY, modifiers);
+    cg::Engine::systemMouseMove(e->targetX, e->targetY, modifiers);
     if (eventType == EMSCRIPTEN_EVENT_MOUSEDOWN && e->buttons != 0){
-        Supernova::Engine::systemMouseDown(supernova_mouse_button(e->button), e->targetX, e->targetY, modifiers);
+        cg::Engine::systemMouseDown(supernova_mouse_button(e->button), e->targetX, e->targetY, modifiers);
     }
     if (eventType == EMSCRIPTEN_EVENT_MOUSEUP){
-        Supernova::Engine::systemMouseUp(supernova_mouse_button(e->button), e->targetX, e->targetY, modifiers);
+        cg::Engine::systemMouseUp(supernova_mouse_button(e->button), e->targetX, e->targetY, modifiers);
     }
     if (eventType == EMSCRIPTEN_EVENT_MOUSEENTER){
-        Supernova::Engine::systemMouseEnter();
+        cg::Engine::systemMouseEnter();
     }
     if (eventType == EMSCRIPTEN_EVENT_MOUSELEAVE){
-        Supernova::Engine::systemMouseLeave();
+        cg::Engine::systemMouseLeave();
     }
 
     return 0;
@@ -357,7 +357,7 @@ EM_BOOL SupernovaWeb::wheel_callback(int eventType, const EmscriptenWheelEvent *
     if (e->mouse.altKey) modifiers |= S_MODIFIER_ALT;
     if (e->mouse.metaKey) modifiers |= S_MODIFIER_SUPER;
 
-    Supernova::Engine::systemMouseScroll(scale * (float)e->deltaX, scale * (float)e->deltaY, modifiers);
+    cg::Engine::systemMouseScroll(scale * (float)e->deltaX, scale * (float)e->deltaY, modifiers);
 
   return 0;
 }
@@ -369,23 +369,23 @@ EM_BOOL SupernovaWeb::touch_callback(int emsc_type, const EmscriptenTouchEvent* 
         case EMSCRIPTEN_EVENT_TOUCHSTART:
             for (int i = 0; i < emsc_event->numTouches; i++) {
                 const EmscriptenTouchPoint* src = &emsc_event->touches[i];
-                Supernova::Engine::systemTouchStart((int)src->identifier, src->targetX, src->targetY);
+                cg::Engine::systemTouchStart((int)src->identifier, src->targetX, src->targetY);
             }
             break;
         case EMSCRIPTEN_EVENT_TOUCHMOVE:
             for (int i = 0; i < emsc_event->numTouches; i++) {
                 const EmscriptenTouchPoint* src = &emsc_event->touches[i];
-                Supernova::Engine::systemTouchMove((int)src->identifier, src->targetX, src->targetY);
+                cg::Engine::systemTouchMove((int)src->identifier, src->targetX, src->targetY);
             }
             break;
         case EMSCRIPTEN_EVENT_TOUCHEND:
             for (int i = 0; i < emsc_event->numTouches; i++) {
                 const EmscriptenTouchPoint* src = &emsc_event->touches[i];
-                Supernova::Engine::systemTouchEnd((int)src->identifier, src->targetX, src->targetY);
+                cg::Engine::systemTouchEnd((int)src->identifier, src->targetX, src->targetY);
             }
             break;
         case EMSCRIPTEN_EVENT_TOUCHCANCEL:
-            Supernova::Engine::systemTouchCancel();
+            cg::Engine::systemTouchCancel();
             break;
         default:
             retval = false;
@@ -397,8 +397,8 @@ EM_BOOL SupernovaWeb::touch_callback(int emsc_type, const EmscriptenTouchEvent* 
 
 EM_BOOL SupernovaWeb::webgl_context_callback(int emsc_type, const void* reserved, void* user_data) {
     switch (emsc_type) {
-        case EMSCRIPTEN_EVENT_WEBGLCONTEXTLOST:     Supernova::Engine::systemPause(); break;
-        case EMSCRIPTEN_EVENT_WEBGLCONTEXTRESTORED: Supernova::Engine::systemResume(); break;
+        case EMSCRIPTEN_EVENT_WEBGLCONTEXTLOST:     cg::Engine::systemPause(); break;
+        case EMSCRIPTEN_EVENT_WEBGLCONTEXTRESTORED: cg::Engine::systemResume(); break;
         default:                                    break;
     }
 

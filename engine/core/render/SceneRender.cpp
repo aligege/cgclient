@@ -2,7 +2,7 @@
 
 #include "sokol/SokolScene.h"
 
-using namespace Supernova;
+using namespace cg;
 
 SceneRender::SceneRender(){ }
 

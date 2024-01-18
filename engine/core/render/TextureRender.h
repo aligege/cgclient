@@ -4,7 +4,7 @@
 #include "Render.h"
 #include "sokol/SokolTexture.h"
 
-namespace Supernova{
+namespace cg{
 
     class TextureRender{
 

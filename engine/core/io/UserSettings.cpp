@@ -5,7 +5,7 @@
 #include "UserSettings.h"
 #include "System.h"
 
-using namespace Supernova;
+using namespace cg;
 
 bool UserSettings::getBoolForKey(const char *key){
     return getBoolForKey(key, false);

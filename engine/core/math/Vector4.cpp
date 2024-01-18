@@ -1,6 +1,6 @@
 #include "Vector4.h"
 
-using namespace Supernova;
+using namespace cg;
 
 const Vector4 Vector4::ZERO( 0, 0, 0, 0 );
 

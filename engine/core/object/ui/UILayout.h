@@ -7,7 +7,7 @@
 
 #include "Object.h"
 
-namespace Supernova{
+namespace cg{
     class UILayout: public Object{
 
     public:

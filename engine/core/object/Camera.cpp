@@ -8,7 +8,7 @@
 #include "Engine.h"
 #include "subsystem/RenderSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Camera::Camera(Scene* scene): Object(scene){
     addComponent<CameraComponent>({});

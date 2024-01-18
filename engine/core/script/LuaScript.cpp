@@ -10,7 +10,7 @@
 
 #include "LuaBinding.h"
 
-using namespace Supernova;
+using namespace cg;
 
 void LuaScript::setObject(std::string global, Object* object){
     lua_State *L = LuaBinding::getLuaState();

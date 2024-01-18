@@ -1,6 +1,6 @@
 #include "ObjectRender.h"
 
-using namespace Supernova;
+using namespace cg;
 
 ObjectRender::ObjectRender(){ }
 

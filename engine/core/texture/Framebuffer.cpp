@@ -7,7 +7,7 @@
 #include "Engine.h"
 #include "Log.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Framebuffer::Framebuffer(){
     this->width = 512;

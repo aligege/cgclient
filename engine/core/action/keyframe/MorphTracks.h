@@ -7,7 +7,7 @@
 
 #include "action/Action.h"
 
-namespace Supernova{
+namespace cg{
     class MorphTracks: public Action{
 
     public:

@@ -10,7 +10,7 @@
 #include "stb_truetype.h"
 #include "texture/Texture.h"
 
-namespace Supernova {
+namespace cg {
 
     class STBText {
 

@@ -8,7 +8,7 @@
 #include <string>
 #include "io/Data.h"
 
-namespace Supernova {
+namespace cg {
     class UserSettings {
     public:
 

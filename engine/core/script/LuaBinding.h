@@ -8,7 +8,7 @@
 typedef struct lua_State lua_State;
 typedef int (*lua_CFunction) (lua_State *L);
 
-namespace Supernova {
+namespace cg {
 
     class LuaBinding {
         

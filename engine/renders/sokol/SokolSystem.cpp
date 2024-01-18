@@ -21,7 +21,7 @@
 // commit_commands() when you're done for the frame
 // flush_commands() on termination, before exiting the thread
 
-using namespace Supernova;
+using namespace cg;
 
 void SokolSystem::setup(){
     /* setup sokol_gfx */

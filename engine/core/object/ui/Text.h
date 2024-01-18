@@ -7,7 +7,7 @@
 
 #include "UILayout.h"
 
-namespace Supernova{
+namespace cg{
     class STBText;
 
     class Text: public UILayout{

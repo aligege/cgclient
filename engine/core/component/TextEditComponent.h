@@ -7,7 +7,7 @@
 
 #include "util/FunctionSubscribe.h"
 
-namespace Supernova{
+namespace cg{
 
     struct TextEditComponent{
         Entity text = NULL_ENTITY;

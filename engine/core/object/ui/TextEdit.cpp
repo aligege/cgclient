@@ -3,7 +3,7 @@
 #include "component/TextComponent.h"
 #include "subsystem/UISystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 TextEdit::TextEdit(Scene* scene): Image(scene){
     addComponent<TextEditComponent>({});

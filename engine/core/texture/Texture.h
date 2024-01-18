@@ -9,7 +9,7 @@
 #include <string>
 #include <memory>
 
-namespace Supernova{
+namespace cg{
 
     class Texture{
         private:

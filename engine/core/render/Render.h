@@ -2,7 +2,7 @@
 #define Render_h
 
 
-namespace Supernova{
+namespace cg{
 
     enum class PrimitiveType{
         TRIANGLES,

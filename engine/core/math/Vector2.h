@@ -7,15 +7,15 @@
 #include <math.h>
 #include <string>
 
-namespace Supernova { class Vector2; }
-Supernova::Vector2 operator * ( const float fScalar, const Supernova::Vector2& rkVector );
-Supernova::Vector2 operator / ( const float fScalar, const Supernova::Vector2& rkVector );
-Supernova::Vector2 operator + (const Supernova::Vector2& lhs, const float rhs);
-Supernova::Vector2 operator + (const float lhs, const Supernova::Vector2& rhs);
-Supernova::Vector2 operator - (const Supernova::Vector2& lhs, const float rhs);
-Supernova::Vector2 operator - (const float lhs, const Supernova::Vector2& rhs);
+namespace cg { class Vector2; }
+cg::Vector2 operator * ( const float fScalar, const cg::Vector2& rkVector );
+cg::Vector2 operator / ( const float fScalar, const cg::Vector2& rkVector );
+cg::Vector2 operator + (const cg::Vector2& lhs, const float rhs);
+cg::Vector2 operator + (const float lhs, const cg::Vector2& rhs);
+cg::Vector2 operator - (const cg::Vector2& lhs, const float rhs);
+cg::Vector2 operator - (const float lhs, const cg::Vector2& rhs);
 
-namespace Supernova {
+namespace cg {
 
     class Vector3;
 

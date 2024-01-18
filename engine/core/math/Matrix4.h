@@ -6,7 +6,7 @@
 #include "math/Matrix3.h"
 #include "math/Vector4.h"
 
-namespace Supernova {
+namespace cg {
 
     class Quaternion;
 

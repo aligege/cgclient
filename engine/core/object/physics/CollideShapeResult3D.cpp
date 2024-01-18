@@ -7,7 +7,7 @@
 #include "Jolt/Jolt.h"
 #include "Jolt/Physics/Collision/CollideShape.h"
 
-using namespace Supernova;
+using namespace cg;
 
 CollideShapeResult3D::CollideShapeResult3D(Scene* scene, const JPH::CollideShapeResult* collideShapeResult){
     this->scene = scene;

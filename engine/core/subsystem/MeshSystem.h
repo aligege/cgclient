@@ -15,7 +15,7 @@
 #include "component/TerrainComponent.h"
 #include "component/TilemapComponent.h"
 
-namespace Supernova{
+namespace cg{
 
 	class MeshSystem : public SubSystem {
 

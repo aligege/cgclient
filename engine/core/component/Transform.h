@@ -6,7 +6,7 @@
 #include "math/Matrix4.h"
 #include "ecs/Entity.h"
 
-namespace Supernova{
+namespace cg{
 
     struct Transform{
         std::string name;

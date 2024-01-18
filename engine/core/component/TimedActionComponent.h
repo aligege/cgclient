@@ -3,7 +3,7 @@
 
 #include "action/Ease.h"
 
-namespace Supernova{
+namespace cg{
 
     struct TimedActionComponent{
         float time = 0;

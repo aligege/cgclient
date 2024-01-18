@@ -12,7 +12,7 @@
 #include "Entity.h"
 #include "Log.h"
 
-namespace Supernova {
+namespace cg {
 
 	class ComponentArrayBase{
 	public:

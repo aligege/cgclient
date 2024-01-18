@@ -6,7 +6,7 @@
 
 typedef struct lua_State lua_State;
 
-namespace Supernova{
+namespace cg{
 
     class Body2D;
     class Contact2D;

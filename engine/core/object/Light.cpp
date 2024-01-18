@@ -8,7 +8,7 @@
 #include "util/Color.h"
 #include <math.h>
 
-using namespace Supernova;
+using namespace cg;
 
 Light::Light(Scene* scene): Object(scene){
     addComponent<LightComponent>({});

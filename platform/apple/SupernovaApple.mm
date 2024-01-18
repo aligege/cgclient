@@ -142,10 +142,10 @@ double SupernovaApple::getDoubleForKey(const char *key, double defaultValue){
     return defaultValue;
 }
 
-Supernova::Data SupernovaApple::getDataForKey(const char* key, const Supernova::Data& defaultValue){
+cg::Data SupernovaApple::getDataForKey(const char* key, const cg::Data& defaultValue){
     NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:[NSString stringWithUTF8String:key]];
     if (data){
-        return Supernova::Data((unsigned char*)data.bytes, (unsigned int)data.length, true, true);
+        return cg::Data((unsigned char*)data.bytes, (unsigned int)data.length, true, true);
     }
     
      return defaultValue;
@@ -180,7 +180,7 @@ void SupernovaApple::setDoubleForKey(const char *key, double value){
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithDouble:value] forKey:[NSString stringWithUTF8String:key]];
 }
 
-void SupernovaApple::setDataForKey(const char* key, Supernova::Data& value){
+void SupernovaApple::setDataForKey(const char* key, cg::Data& value){
     [[NSUserDefaults standardUserDefaults] setObject:[NSData dataWithBytes: value.getMemPtr() length: value.length()] forKey:[NSString stringWithUTF8String:key]];
 }
 
@@ -198,15 +198,15 @@ void SupernovaApple::initializeAdMob(bool tagForChildDirectedTreatment, bool tag
 #endif
 }
 
-void SupernovaApple::setMaxAdContentRating(Supernova::AdMobRating rating){
+void SupernovaApple::setMaxAdContentRating(cg::AdMobRating rating){
     int irating = 0;
-    if (rating == Supernova::AdMobRating::General){
+    if (rating == cg::AdMobRating::General){
         irating = 1;
-    }else if (rating == Supernova::AdMobRating::ParentalGuidance){
+    }else if (rating == cg::AdMobRating::ParentalGuidance){
         irating = 2;
-    }else if (rating == Supernova::AdMobRating::Teen){
+    }else if (rating == cg::AdMobRating::Teen){
         irating = 3;
-    }else if (rating == Supernova::AdMobRating::MatureAudience){
+    }else if (rating == cg::AdMobRating::MatureAudience){
         irating = 4;
     }
 #if TARGET_OS_IPHONE

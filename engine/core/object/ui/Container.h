@@ -7,7 +7,7 @@
 
 #include "UILayout.h"
 
-namespace Supernova{
+namespace cg{
     class Container: public UILayout{
 
     public:

@@ -7,7 +7,7 @@
 #include "PhysicsSystem.h"
 #include "box2d.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Manifold2D::Manifold2D(Scene* scene, const b2Manifold* manifold){
     this->scene = scene;

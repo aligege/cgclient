@@ -20,7 +20,7 @@
 #include <memory>
 #include <cmath>
 
-using namespace Supernova;
+using namespace cg;
 
 uint32_t RenderSystem::pixelsWhite[64];
 uint32_t RenderSystem::pixelsBlack[64];

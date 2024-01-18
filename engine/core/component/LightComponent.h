@@ -7,7 +7,7 @@
 #include "render/FramebufferRender.h"
 #include "Engine.h"
 
-namespace Supernova{
+namespace cg{
 
     enum class LightType{
         DIRECTIONAL,

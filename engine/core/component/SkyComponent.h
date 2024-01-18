@@ -4,7 +4,7 @@
 #include "buffer/Buffer.h"
 #include "texture/Texture.h"
 
-namespace Supernova{
+namespace cg{
 
     struct SkyComponent{
         bool loaded = false;

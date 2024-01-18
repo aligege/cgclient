@@ -53,7 +53,7 @@
 #include "component/Body3DComponent.h"
 #include "component/Joint3DComponent.h"
 
-namespace Supernova{
+namespace cg{
 
 	class Scene{
 	private:

@@ -8,7 +8,7 @@
 #include "texture/Material.h"
 #include "Engine.h"
 
-namespace Supernova{
+namespace cg{
 
     struct TerrainNodeIndex{
         unsigned int indexCount;

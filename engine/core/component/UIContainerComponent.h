@@ -5,7 +5,7 @@
 
 #include "math/Rect.h"
 
-namespace Supernova{
+namespace cg{
 
     enum class ContainerType{
         VERTICAL,

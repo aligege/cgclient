@@ -6,7 +6,7 @@
 #include "subsystem/AudioSystem.h"
 
 
-using namespace Supernova;
+using namespace cg;
 
 Audio::Audio(Scene* scene): Object(scene){
     addComponent<AudioComponent>({});

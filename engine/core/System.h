@@ -16,7 +16,7 @@
 #include "io/Data.h"
 #include "sokol_gfx.h"
 
-namespace Supernova {
+namespace cg {
     enum class AdMobRating{
         General,
         ParentalGuidance,

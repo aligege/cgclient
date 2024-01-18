@@ -9,7 +9,7 @@
 #include "Body2D.h"
 #include "Body3D.h"
 
-namespace Supernova{
+namespace cg{
 
     class Object: public EntityHandle{
     public:

@@ -4,11 +4,11 @@
 #include <math.h>
 #include <string>
 
-namespace Supernova { class Vector3; }
-Supernova::Vector3 operator * ( float f, const Supernova::Vector3& v );
+namespace cg { class Vector3; }
+cg::Vector3 operator * ( float f, const cg::Vector3& v );
 
 
-namespace Supernova {
+namespace cg {
 
     class Vector3
     {

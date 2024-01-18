@@ -4,7 +4,7 @@
 #include "Render.h"
 #include "sokol/SokolBuffer.h"
 
-namespace Supernova{
+namespace cg{
     class BufferRender{
 
     public:

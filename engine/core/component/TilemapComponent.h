@@ -7,7 +7,7 @@
 
 
 
-namespace Supernova{
+namespace cg{
 
     struct TileRectData{
         std::string name;

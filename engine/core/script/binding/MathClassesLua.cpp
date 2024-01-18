@@ -20,7 +20,7 @@
 #include "Plane.h"
 #include "AlignedBox.h"
 
-using namespace Supernova;
+using namespace cg;
 
 namespace luabridge
 {

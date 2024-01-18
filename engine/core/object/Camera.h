@@ -8,7 +8,7 @@
 #include "Object.h"
 #include "component/CameraComponent.h"
 
-namespace Supernova{
+namespace cg{
 
     class Camera: public Object{
 

@@ -9,7 +9,7 @@
 #include "Vector4.h"
 #include <string>
 
-namespace Supernova {
+namespace cg {
 
     class Rect{
     private:

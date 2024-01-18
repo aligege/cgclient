@@ -4,7 +4,7 @@
 #include "util/FrameData.h"
 #include "Engine.h"
 
-namespace Supernova{
+namespace cg{
 
     enum class PivotPreset{
         CENTER,

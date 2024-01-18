@@ -7,7 +7,7 @@
 #include "subsystem/RenderSystem.h"
 #include "subsystem/PhysicsSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Object::Object(Scene* scene): EntityHandle(scene){
     addComponent<Transform>({});

@@ -9,7 +9,7 @@
 #include "math/Vector4.h"
 #include "component/PolygonComponent.h"
 
-namespace Supernova{
+namespace cg{
 
     struct MeshPolygonComponent{
         int width = 0;

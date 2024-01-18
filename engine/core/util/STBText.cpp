@@ -7,7 +7,7 @@
 #include <locale>
 #include "DefaultFont.h"
 
-using namespace Supernova;
+using namespace cg;
 
 STBText::STBText() {
     atlasWidth = 0;

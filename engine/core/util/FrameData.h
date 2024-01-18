@@ -3,7 +3,7 @@
 
 #include "math/Rect.h"
 
-namespace Supernova{
+namespace cg{
 
     struct FrameData{
         bool active = false;

@@ -43,7 +43,7 @@ static CGSize _screenSize;
 
 - (nonnull instancetype)initWithMetalKitView:(nonnull MTKView *)view withArgs:(NSArray*)args;
 {
-    Supernova::Engine::systemInit((int)[args count], [self getArray:args]);
+    cg::Engine::systemInit((int)[args count], [self getArray:args]);
     
     self = [super init];
     if(self)
@@ -58,7 +58,7 @@ static CGSize _screenSize;
         
         _screenSize.width = (float) view.drawableSize.width;
         _screenSize.height = (float) view.drawableSize.height;
-        Supernova::Engine::systemViewLoaded();
+        cg::Engine::systemViewLoaded();
     }
 
     return self;
@@ -66,13 +66,13 @@ static CGSize _screenSize;
 
 - (void)destroyView
 {
-    Supernova::Engine::systemViewDestroyed();
-    Supernova::Engine::systemShutdown();
+    cg::Engine::systemViewDestroyed();
+    cg::Engine::systemShutdown();
 }
 
 - (void)drawInMTKView:(nonnull MTKView *)view
 {
-    Supernova::Engine::systemDraw();
+    cg::Engine::systemDraw();
 }
 
 - (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size
@@ -80,15 +80,15 @@ static CGSize _screenSize;
     /// Respond to drawable size or orientation changes here
     _screenSize.width = (float) size.width;
     _screenSize.height = (float) size.height;
-    Supernova::Engine::systemViewChanged();
+    cg::Engine::systemViewChanged();
 }
 
 + (void)pauseGame {
-    Supernova::Engine::systemPause();
+    cg::Engine::systemPause();
 }
 
 + (void)resumeGame {
-    Supernova::Engine::systemResume();
+    cg::Engine::systemResume();
 }
 
 @end

@@ -3,7 +3,7 @@
 
 #include "Engine.h"
 
-namespace Supernova{
+namespace cg{
 
     struct TranslateTracksComponent{
         std::vector<Vector3> values;

@@ -13,7 +13,7 @@ namespace JPH{
     class Body;
 }
 
-namespace Supernova{
+namespace cg{
 
     class Object;
 

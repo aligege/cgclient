@@ -7,7 +7,7 @@
 
 #include "TimedAction.h"
 
-namespace Supernova{
+namespace cg{
     class ScaleAction: public TimedAction{
 
     public:

@@ -9,7 +9,7 @@
 #include "box2d.h"
 #include "subsystem/PhysicsSystem.h"
 
-namespace Supernova{
+namespace cg{
 
     class Box2DContactFilter : public b2ContactFilter{
     private:

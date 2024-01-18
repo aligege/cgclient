@@ -3,7 +3,7 @@
 
 #include "math/Vector3.h"
 
-namespace Supernova{
+namespace cg{
 
     struct ScaleActionComponent{
         Vector3 endScale;

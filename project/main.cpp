@@ -1,5 +1,5 @@
 #include "Supernova.h"
-using namespace Supernova;
+using namespace cg;
 
 #include "Image.h"
 
@@ -9,7 +9,7 @@ Image image(&scene);
 void init(){
 
     image.setAnchorPreset(AnchorPreset::CENTER);
-    image.setTexture("supernova.png");
+    image.setTexture("cgclient.png");
 
     Engine::setScalingMode(Scaling::FITWIDTH);
     Engine::setCanvasSize(1000,480);

@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace Supernova{
+namespace cg{
 
     struct BoneComponent{
         Entity model = NULL_ENTITY;

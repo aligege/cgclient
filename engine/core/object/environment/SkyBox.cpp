@@ -5,7 +5,7 @@
 #include "SkyBox.h"
 #include "subsystem/RenderSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 SkyBox::SkyBox(Scene* scene): EntityHandle(scene){
     addComponent<SkyComponent>({});

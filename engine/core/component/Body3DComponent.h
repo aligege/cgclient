@@ -7,7 +7,7 @@ namespace JPH{
     class Body;
 }
 
-namespace Supernova{
+namespace cg{
 
     struct Body3DComponent{
         JPH::Body *body = NULL;

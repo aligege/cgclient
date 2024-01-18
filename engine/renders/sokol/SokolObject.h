@@ -16,7 +16,7 @@
 #include <map>
 
 
-namespace Supernova{
+namespace cg{
 
     struct UniformStageSlot{
         sg_shader_stage stage;

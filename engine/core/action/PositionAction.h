@@ -7,7 +7,7 @@
 
 #include "TimedAction.h"
 
-namespace Supernova{
+namespace cg{
     class PositionAction: public TimedAction{
 
     public:

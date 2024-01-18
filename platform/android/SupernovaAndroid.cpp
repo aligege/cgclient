@@ -217,15 +217,15 @@ void SupernovaAndroid::initializeAdMob(bool tagForChildDirectedTreatment, bool t
     env->CallVoidMethod(jniData.adMobWrapperObjRef, jniData.initializeAdMob, tagForChildDirectedTreatment, tagForUnderAgeOfConsent);
 }
 
-void SupernovaAndroid::setMaxAdContentRating(Supernova::AdMobRating rating){
+void SupernovaAndroid::setMaxAdContentRating(cg::AdMobRating rating){
     int irating = 0;
-    if (rating == Supernova::AdMobRating::General){
+    if (rating == cg::AdMobRating::General){
         irating = 1;
-    }else if (rating == Supernova::AdMobRating::ParentalGuidance){
+    }else if (rating == cg::AdMobRating::ParentalGuidance){
         irating = 2;
-    }else if (rating == Supernova::AdMobRating::Teen){
+    }else if (rating == cg::AdMobRating::Teen){
         irating = 3;
-    }else if (rating == Supernova::AdMobRating::MatureAudience){
+    }else if (rating == cg::AdMobRating::MatureAudience){
         irating = 4;
     }
 

@@ -25,7 +25,7 @@
 #include "AudioSystem.h"
 #include "PhysicsSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 void LuaBinding::registerCoreClasses(lua_State *L){
 #ifndef DISABLE_LUA_BINDINGS

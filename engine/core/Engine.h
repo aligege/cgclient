@@ -60,7 +60,7 @@
 
 void init();
 
-namespace Supernova {
+namespace cg {
 
     class Scene;
     //class Rect;

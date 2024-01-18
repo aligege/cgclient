@@ -157,7 +157,7 @@
 #include <vector>
 #include "math/Vector2.h"
 
-namespace Supernova {
+namespace cg {
 
     typedef struct Touch{
         int pointer;

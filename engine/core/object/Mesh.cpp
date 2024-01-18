@@ -7,7 +7,7 @@
 #include "util/Color.h"
 #include "subsystem/RenderSystem.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Mesh::Mesh(Scene* scene): Object(scene){
     addComponent<MeshComponent>({});

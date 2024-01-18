@@ -8,7 +8,7 @@
 
 #include "System.h"
 
-using namespace Supernova;
+using namespace cg;
 
 File::File(){
     fileHandle = NULL;

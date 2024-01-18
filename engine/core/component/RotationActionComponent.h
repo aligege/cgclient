@@ -3,7 +3,7 @@
 
 #include "math/Quaternion.h"
 
-namespace Supernova{
+namespace cg{
 
     struct RotationActionComponent{
         Quaternion endRotation;

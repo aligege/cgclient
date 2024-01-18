@@ -10,7 +10,7 @@
 #include "util/JoltPhysicsAux.h"
 
 
-using namespace Supernova;
+using namespace cg;
 
 
 PhysicsSystem::PhysicsSystem(Scene* scene): SubSystem(scene){

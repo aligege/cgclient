@@ -7,7 +7,7 @@ namespace JPH{
     class TwoBodyConstraint;
 }
 
-namespace Supernova{
+namespace cg{
 
     enum class Joint3DType{
         FIXED,

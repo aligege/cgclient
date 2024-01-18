@@ -16,7 +16,7 @@
 #include <map>
 #include <memory>
 
-namespace Supernova{
+namespace cg{
 
     struct Submesh{
         Material material;

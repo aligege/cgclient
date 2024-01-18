@@ -7,7 +7,7 @@
 
 #include "math/Vector3.h"
 
-namespace Supernova{
+namespace cg{
 
     struct ColorActionComponent{
         Vector3 endColor;

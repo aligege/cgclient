@@ -29,7 +29,7 @@ int SupernovaGLFW::init(int argc, char **argv){
     windowWidth = 960;
     windowHeight = 540;
 
-    Supernova::Engine::systemInit(argc, argv);
+    cg::Engine::systemInit(argc, argv);
 
     /* create window and GL context via GLFW */
     glfwInit();
@@ -46,9 +46,9 @@ int SupernovaGLFW::init(int argc, char **argv){
 
     glfwSetMouseButtonCallback(window, [](GLFWwindow*, int btn, int action, int mods) {
         if (action==GLFW_PRESS){
-            Supernova::Engine::systemMouseDown(btn, float(mousePosX), float(mousePosY), mods);
+            cg::Engine::systemMouseDown(btn, float(mousePosX), float(mousePosY), mods);
         }else if (action==GLFW_RELEASE){
-            Supernova::Engine::systemMouseUp(btn, float(mousePosX), float(mousePosY), mods);
+            cg::Engine::systemMouseUp(btn, float(mousePosX), float(mousePosY), mods);
         }
     });
     glfwSetCursorPosCallback(window, [](GLFWwindow*, double pos_x, double pos_y) {
@@ -57,30 +57,30 @@ int SupernovaGLFW::init(int argc, char **argv){
 
         mousePosX = pos_x * xscale;
         mousePosY = pos_y * yscale;
-        Supernova::Engine::systemMouseMove(float(pos_x), float(pos_y), 0);
+        cg::Engine::systemMouseMove(float(pos_x), float(pos_y), 0);
     });
     glfwSetScrollCallback(window, [](GLFWwindow*, double pos_x, double pos_y){
-        Supernova::Engine::systemMouseScroll((float)pos_x, (float)pos_y, 0);
+        cg::Engine::systemMouseScroll((float)pos_x, (float)pos_y, 0);
     });
     glfwSetKeyCallback(window, [](GLFWwindow*, int key, int /*scancode*/, int action, int mods){
         if (action==GLFW_PRESS){
             if (key == GLFW_KEY_TAB)
-                Supernova::Engine::systemCharInput('\t');
+                cg::Engine::systemCharInput('\t');
             if (key == GLFW_KEY_BACKSPACE)
-                Supernova::Engine::systemCharInput('\b');
+                cg::Engine::systemCharInput('\b');
             if (key == GLFW_KEY_ENTER)
-                Supernova::Engine::systemCharInput('\r');
+                cg::Engine::systemCharInput('\r');
             if (key == GLFW_KEY_ESCAPE)
-                Supernova::Engine::systemCharInput('\e');
-            Supernova::Engine::systemKeyDown(key, false, mods);
+                cg::Engine::systemCharInput('\e');
+            cg::Engine::systemKeyDown(key, false, mods);
         }else if (action==GLFW_REPEAT){
-            Supernova::Engine::systemKeyDown(key, true, mods);
+            cg::Engine::systemKeyDown(key, true, mods);
         }else if (action==GLFW_RELEASE){
-            Supernova::Engine::systemKeyUp(key, false, mods);
+            cg::Engine::systemKeyUp(key, false, mods);
         }
     });
     glfwSetCharCallback(window, [](GLFWwindow*, unsigned int codepoint){
-        Supernova::Engine::systemCharInput(codepoint);
+        cg::Engine::systemCharInput(codepoint);
     });
 
     int cur_width, cur_height;
@@ -89,8 +89,8 @@ int SupernovaGLFW::init(int argc, char **argv){
     SupernovaGLFW::screenWidth = cur_width;
     SupernovaGLFW::screenHeight = cur_height;
 
-    Supernova::Engine::systemViewLoaded();
-    Supernova::Engine::systemViewChanged();
+    cg::Engine::systemViewLoaded();
+    cg::Engine::systemViewChanged();
 
     /* draw loop */
     while (!glfwWindowShouldClose(window)) {
@@ -100,17 +100,17 @@ int SupernovaGLFW::init(int argc, char **argv){
         if (cur_width != SupernovaGLFW::screenWidth || cur_height != SupernovaGLFW::screenHeight){
             SupernovaGLFW::screenWidth = cur_width;
             SupernovaGLFW::screenHeight = cur_height;
-            Supernova::Engine::systemViewChanged();
+            cg::Engine::systemViewChanged();
         }
 
-        Supernova::Engine::systemDraw();
+        cg::Engine::systemDraw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
-    Supernova::Engine::systemViewDestroyed();
-    Supernova::Engine::systemShutdown();
+    cg::Engine::systemViewDestroyed();
+    cg::Engine::systemShutdown();
     glfwTerminate();
     return 0;
 }

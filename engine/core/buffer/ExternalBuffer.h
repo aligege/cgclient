@@ -8,7 +8,7 @@
 #include "buffer/Buffer.h"
 #include <string>
 
-namespace Supernova {
+namespace cg {
 
     class ExternalBuffer : public Buffer {
 

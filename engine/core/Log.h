@@ -5,7 +5,7 @@
 #ifndef log_h
 #define log_h
 
-namespace Supernova {
+namespace cg {
 
     class Log {
     public:

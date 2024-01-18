@@ -4,7 +4,7 @@
 #include "math/Vector3.h"
 #include "texture/Texture.h"
 
-namespace Supernova{
+namespace cg{
 
     struct Material{
         //Based on shader bytes ordering

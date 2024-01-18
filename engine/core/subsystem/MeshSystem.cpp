@@ -14,7 +14,7 @@
 #include "tiny_obj_loader.h"
 #include "tiny_gltf.h"
 
-using namespace Supernova;
+using namespace cg;
 
 
 MeshSystem::MeshSystem(Scene* scene): SubSystem(scene){

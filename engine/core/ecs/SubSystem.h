@@ -5,7 +5,7 @@
 #include "Signature.h"
 #include <set>
 
-namespace Supernova{
+namespace cg{
 
 	class Scene;
 

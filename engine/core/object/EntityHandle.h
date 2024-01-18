@@ -8,7 +8,7 @@
 #include "Scene.h"
 #include "Entity.h"
 
-namespace Supernova{
+namespace cg{
     class EntityHandle{
 
     protected:

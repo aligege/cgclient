@@ -9,7 +9,7 @@
 #include <map>
 #include <memory>
 
-namespace Supernova{
+namespace cg{
 
     typedef std::map<std::string, std::shared_ptr<ShaderRender>> shaders_t;
 

@@ -1,7 +1,7 @@
 #include "BufferRender.h"
 #include "Engine.h"
 
-using namespace Supernova;
+using namespace cg;
 
 BufferRender::BufferRender(){ }
 

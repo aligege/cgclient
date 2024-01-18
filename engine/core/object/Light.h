@@ -7,7 +7,7 @@
 
 #include "Object.h"
 
-namespace Supernova{
+namespace cg{
 
     class Light: public Object{
     public:

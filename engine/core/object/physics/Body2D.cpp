@@ -9,7 +9,7 @@
 #include "subsystem/PhysicsSystem.h"
 #include "box2d.h"
 
-using namespace Supernova;
+using namespace cg;
 
 b2BodyType getBodyTypeToB2(BodyType type){
     if (type == BodyType::STATIC){

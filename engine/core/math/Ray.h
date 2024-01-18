@@ -5,7 +5,7 @@
 #include "math/Plane.h"
 #include "math/AlignedBox.h"
 
-namespace Supernova {
+namespace cg {
 
     class Ray{
 

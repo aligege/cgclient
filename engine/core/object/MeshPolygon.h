@@ -7,7 +7,7 @@
 
 #include "Mesh.h"
 
-namespace Supernova{
+namespace cg{
     class MeshPolygon: public Mesh{
 
     public:

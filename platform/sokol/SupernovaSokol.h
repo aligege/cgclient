@@ -3,7 +3,7 @@
 
 #include "System.h"
 
-class SupernovaSokol: public Supernova::System{
+class SupernovaSokol: public cg::System{
 
 public:
 

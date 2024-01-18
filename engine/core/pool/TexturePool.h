@@ -11,7 +11,7 @@
 #include <memory>
 #include <array>
 
-namespace Supernova{
+namespace cg{
 
     typedef std::map< std::string, std::shared_ptr<TextureRender> > textures_t;
 

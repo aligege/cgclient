@@ -5,7 +5,7 @@
 #include <string>
 #include "System.h"
 
-class SupernovaAndroid: public Supernova::System {
+class SupernovaAndroid: public cg::System {
 
 private:
 
@@ -43,7 +43,7 @@ public:
 	virtual void removeKey(const char* key);
 
 	virtual void initializeAdMob(bool tagForChildDirectedTreatment, bool tagForUnderAgeOfConsent);
-    virtual void setMaxAdContentRating(Supernova::AdMobRating rating);
+    virtual void setMaxAdContentRating(cg::AdMobRating rating);
 	virtual void loadInterstitialAd(std::string adUnitID);
 	virtual bool isInterstitialAdLoaded();
 	virtual void showInterstitialAd();

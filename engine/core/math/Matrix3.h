@@ -3,7 +3,7 @@
 
 #include "math/Vector3.h"
 
-namespace Supernova {
+namespace cg {
 
     class Matrix3 {
 

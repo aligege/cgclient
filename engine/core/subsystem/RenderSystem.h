@@ -27,7 +27,7 @@
 #include <memory>
 #include <queue>
 
-namespace Supernova{
+namespace cg{
 	typedef struct fs_lighting_t {
 	    Vector4 direction_range[MAX_LIGHTS];
 	    Vector4 color_intensity[MAX_LIGHTS];

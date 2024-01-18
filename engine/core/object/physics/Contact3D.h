@@ -13,7 +13,7 @@ namespace JPH{
     class ContactSettings;
 }
 
-namespace Supernova{
+namespace cg{
 
     class Contact3D{
     private:

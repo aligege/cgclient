@@ -18,7 +18,7 @@
 
 #include "sokol_time.h"
 
-using namespace Supernova;
+using namespace cg;
 
 //-----Supernova user config-----
 Scene* Engine::scenes[MAX_SCENE_LAYERS] = {NULL};

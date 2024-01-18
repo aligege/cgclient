@@ -15,7 +15,7 @@
 #include "subsystem/PhysicsSystem.h"
 #include "util/Color.h"
 
-using namespace Supernova;
+using namespace cg;
 
 Scene::Scene(){
 	registerComponent<MeshComponent>();
