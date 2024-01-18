@@ -1,4 +1,4 @@
-package org.supernovaengine.supernova;
+package com.eryinet.cgclient;
 
 import android.app.Activity;
 import android.content.Context;
@@ -216,7 +216,7 @@ public class AdMobWrapper {
                                                     // Make sure to set your reference to null so you don't
                                                     // show it a second time.
                                                     AdMobWrapper.this.interstitialAd = null;
-                                                    Log.e("Supernova", "The ad failed to show.");
+                                                    Log.e("cgclient", "The ad failed to show.");
                                                 }
 
                                                 @Override
@@ -229,7 +229,7 @@ public class AdMobWrapper {
                                 @Override
                                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                                     // Handle the error
-                                    Log.e("Supernova", loadAdError.getMessage());
+                                    Log.e("cgclient", loadAdError.getMessage());
                                     interstitialAd = null;
                                 }
                             });

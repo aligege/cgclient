@@ -1,8 +1,8 @@
 ![Logo](http://www.supernovaengine.org/img/logo_blue.png)
 
-![](https://github.com/supernovaengine/supernova/actions/workflows/android.yml/badge.svg)
-![](https://github.com/supernovaengine/supernova/actions/workflows/build-tool.yml/badge.svg)
-![](https://github.com/supernovaengine/supernova/actions/workflows/cmake-desktop.yml/badge.svg)
+![](https://github.com/supernovaengine/cgclient/actions/workflows/android.yml/badge.svg)
+![](https://github.com/supernovaengine/cgclient/actions/workflows/build-tool.yml/badge.svg)
+![](https://github.com/supernovaengine/cgclient/actions/workflows/cmake-desktop.yml/badge.svg)
 
 **Entity component system (ECS)** and **data-oriented design** engine using object oriented for API.
 

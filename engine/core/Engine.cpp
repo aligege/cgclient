@@ -20,7 +20,7 @@
 
 using namespace cg;
 
-//-----Supernova user config-----
+//-----cgclient user config-----
 Scene* Engine::scenes[MAX_SCENE_LAYERS] = {NULL};
 size_t Engine::numScenes = 0;
 
@@ -58,7 +58,7 @@ std::atomic<bool> Engine::paused = false;
 thread_local bool Engine::asyncThread = false;
 Semaphore Engine::drawSemaphore;
 
-//-----Supernova user events-----
+//-----cgclient user events-----
 FunctionSubscribe<void()> Engine::onViewLoaded;
 FunctionSubscribe<void()> Engine::onViewChanged;
 FunctionSubscribe<void()> Engine::onViewDestroyed;

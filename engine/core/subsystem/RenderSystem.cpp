@@ -2818,7 +2818,7 @@ void RenderSystem::draw(){
 		Log::verbose(
 			"\n"
 			"-------------------\n"
-			"Supernova is missing some shaders, you need to use Supershader tool to create these shaders in project assets directory.\n"
+			"cgclient is missing some shaders, you need to use Supershader tool to create these shaders in project assets directory.\n"
 			"Go to directory \"tools/supershader\" and execute the command:\n"
 			"\n"
 			"> python3 supershader.py -s \"%s\" -l %s\n"

@@ -1,6 +1,6 @@
 //
 //  AdMob.m
-//  Supernova iOS
+//  cgclient iOS
 //
 //  Created by Eduardo Doria Lima on 11/05/23.
 //

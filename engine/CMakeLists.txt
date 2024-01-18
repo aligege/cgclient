@@ -15,6 +15,7 @@ include_directories(libs/tinygltf)
 include_directories(libs/tinyxml2)
 include_directories(libs/box2d/include/box2d)
 include_directories(libs/joltphysics)
+include_directories(libs/http)
 
 add_subdirectory(libs/sokol)
 add_subdirectory(libs/lua)
@@ -41,7 +42,7 @@ file(GLOB_RECURSE SUPERNOVA_SRCS core/*.cpp)
 file(GLOB RENDER_SOKOL_SRC renders/sokol/*.cpp)
 
 add_library(
-    supernova
+    cgclient
 
     STATIC
 
@@ -51,7 +52,7 @@ add_library(
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Emscripten" OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
     target_compile_options(
-        supernova 
+        cgclient 
 
         PUBLIC 
 
@@ -60,13 +61,13 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Emscripten" OR CMAKE_SYSTEM_NAME STREQUAL "Linux"
 endif()
 
 target_link_libraries(
-    supernova
+    cgclient
 
     sokol lua stb tinyobjloader tinygltf tinyxml2 soloud box2d joltphysics
 )
 
 set_target_properties(
-    supernova
+    cgclient
 
     PROPERTIES
 

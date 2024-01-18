@@ -83,7 +83,7 @@ sapp_desc sokol_main(int argc, char* argv[]) {
     app_desc.width = 960;
     app_desc.height = 540;
     app_desc.sample_count = 4;
-    app_desc.window_title = "Supernova";
+    app_desc.window_title = "cgclient";
 
     cg::Engine::systemInit(argc, argv);
 

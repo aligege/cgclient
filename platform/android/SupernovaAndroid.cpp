@@ -24,7 +24,7 @@ static int android_close(void* cookie) {
 }
 
 SupernovaAndroid::SupernovaAndroid(){
-    logtag = "Supernova";
+    logtag = "cgclient";
 }
 
 int SupernovaAndroid::getScreenWidth(){

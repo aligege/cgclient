@@ -4678,9 +4678,9 @@
 			productReference = 713D82C5259D316E00567F9F /* libsokol-ios.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		7162F8CD259547DA0075B97D /* Supernova iOS */ = {
+		7162F8CD259547DA0075B97D /* cgclient iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7162F8FB259547DA0075B97D /* Build configuration list for PBXNativeTarget "Supernova iOS" */;
+			buildConfigurationList = 7162F8FB259547DA0075B97D /* Build configuration list for PBXNativeTarget "cgclient iOS" */;
 			buildPhases = (
 				7162F8CA259547DA0075B97D /* Sources */,
 				7162F8CB259547DA0075B97D /* Frameworks */,
@@ -4691,14 +4691,14 @@
 			dependencies = (
 				713D82D6259D324200567F9F /* PBXTargetDependency */,
 			);
-			name = "Supernova iOS";
-			productName = "Supernova iOS";
-			productReference = 7162F8CE259547DA0075B97D /* Supernova.app */;
+			name = "cgclient iOS";
+			productName = "cgclient iOS";
+			productReference = 7162F8CE259547DA0075B97D /* cgclient.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7162F8E3259547DA0075B97D /* Supernova macOS */ = {
+		7162F8E3259547DA0075B97D /* cgclient macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7162F8FE259547DA0075B97D /* Build configuration list for PBXNativeTarget "Supernova macOS" */;
+			buildConfigurationList = 7162F8FE259547DA0075B97D /* Build configuration list for PBXNativeTarget "cgclient macOS" */;
 			buildPhases = (
 				7162F8E0259547DA0075B97D /* Sources */,
 				7162F8E1259547DA0075B97D /* Frameworks */,

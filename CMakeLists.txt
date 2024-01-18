@@ -146,7 +146,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Android")
     add_definitions("-DLUA_USE_C89")
     add_definitions("-DWITH_MINIAUDIO") # For SoLoud
 
-    set(APP_NAME supernova-android) # Android uses a fixed library name
+    set(APP_NAME cgclient-android) # Android uses a fixed library name
 
     if( ANDROID_ABI MATCHES "^arm(eabi)?(-v7a)?(64-v8a)?$" )
         #add_compile_options("-march=armv8.2a+fp16")
@@ -292,7 +292,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
 
         set(PLATFORM_ROOT ${CG_ROOT}/platform/apple)
 
-        set(APP_BUNDLE_IDENTIFIER "org.supernovaengine.supernova")
+        set(APP_BUNDLE_IDENTIFIER "com.eryinet.cgclient")
 
         set(PLATFORM_EXEC_FLAGS MACOSX_BUNDLE)
 
@@ -366,7 +366,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
 
     set(PLATFORM_ROOT ${CG_ROOT}/platform/apple)
 
-    set(APP_BUNDLE_IDENTIFIER "org.supernovaengine.supernova")
+    set(APP_BUNDLE_IDENTIFIER "com.eryinet.cgclient")
 
     include_directories (/System/Library/Frameworks)
 
@@ -520,7 +520,7 @@ target_compile_options(
 target_link_libraries(
     ${APP_NAME}
 
-    supernova
+    cgclient
     ${PLATFORM_LIBS}
  )
  

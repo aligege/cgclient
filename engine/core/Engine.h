@@ -108,7 +108,7 @@ namespace cg {
     class Engine {
         
     private:
-        //-----Supernova config-----
+        //-----cgclient config-----
         static Scene* scenes[MAX_SCENE_LAYERS];
         static size_t numScenes;
 
@@ -158,7 +158,7 @@ namespace cg {
         //Engine();
         //virtual ~Engine();
         
-        //-----Supernova config-----
+        //-----cgclient config-----
         static void setScene(Scene* scene);
         static Scene* getScene();
         static void addSceneLayer(Scene* scene);
@@ -219,7 +219,7 @@ namespace cg {
         static bool isAsyncThread();
         static bool isViewLoaded();
 
-        //-----Supernova API functions-----
+        //-----cgclient API functions-----
         static void systemInit(int argc, char* argv[]);
         static void systemViewLoaded();
         static void systemViewChanged();
@@ -247,7 +247,7 @@ namespace cg {
 
         static void systemCharInput(wchar_t codepoint);
 
-        //-----Supernova user events-----
+        //-----cgclient user events-----
         static FunctionSubscribe<void()> onViewLoaded;
         static FunctionSubscribe<void()> onViewChanged;
         static FunctionSubscribe<void()> onViewDestroyed;

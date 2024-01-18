@@ -287,8 +287,8 @@ void NativeEngine::setupJNI(){
     mJniData.gameActivityObjRef = NativeEngine::getInstance()->getJavaGameActivity();
     mJniData.gameActivityClsRef = env->GetObjectClass(mJniData.gameActivityObjRef);
 
-    mJniData.getUserSettingsRef = env->GetMethodID(mJniData.gameActivityClsRef, "getUserSettings", "()Lorg/supernovaengine/supernova/UserSettings;");
-    mJniData.getAdMobWrapperRef = env->GetMethodID(mJniData.gameActivityClsRef, "getAdMobWrapper", "()Lorg/supernovaengine/supernova/AdMobWrapper;");
+    mJniData.getUserSettingsRef = env->GetMethodID(mJniData.gameActivityClsRef, "getUserSettings", "()Lcom/eryinet/cgclient/UserSettings;");
+    mJniData.getAdMobWrapperRef = env->GetMethodID(mJniData.gameActivityClsRef, "getAdMobWrapper", "()Lcom/eryinet/cgclient/AdMobWrapper;");
 
     mJniData.userSettingsObjRef = env->CallObjectMethod(mJniData.gameActivityObjRef, mJniData.getUserSettingsRef);
     mJniData.userSettingsClsRef = env->GetObjectClass(mJniData.userSettingsObjRef);

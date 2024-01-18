@@ -1,4 +1,4 @@
-package org.supernovaengine.supernova;
+package com.eryinet.cgclient;
 
 import android.app.Activity;
 import android.content.Context;

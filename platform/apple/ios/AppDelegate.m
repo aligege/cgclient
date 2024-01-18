@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  Supernova iOS
+//  cgclient iOS
 //
 //  Created by Eduardo Dória Lima on 24/12/20.
 //

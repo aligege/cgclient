@@ -1,6 +1,6 @@
 //
 //  AppDelegate.h
-//  Supernova macOS
+//  cgclient macOS
 //
 //  Created by Eduardo Dória Lima on 24/12/20.
 //

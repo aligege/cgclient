@@ -37,7 +37,7 @@ int SupernovaGLFW::init(int argc, char **argv){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    window = glfwCreateWindow(windowWidth, windowHeight, "Supernova", 0, 0);
+    window = glfwCreateWindow(windowWidth, windowHeight, "cgclient", 0, 0);
 
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
