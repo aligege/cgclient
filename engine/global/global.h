@@ -1,0 +1,6 @@
+namespace cg
+{
+    class global
+    {
+    };
+}

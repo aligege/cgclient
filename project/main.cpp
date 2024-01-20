@@ -2,6 +2,8 @@
 using namespace cg;
 
 #include "Image.h"
+#include <iostream>
+
 
 Scene scene;
 Image image(&scene);

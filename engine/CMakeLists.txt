@@ -15,7 +15,7 @@ include_directories(libs/tinygltf)
 include_directories(libs/tinyxml2)
 include_directories(libs/box2d/include/box2d)
 include_directories(libs/joltphysics)
-include_directories(libs/http)
+include_directories(global)
 
 add_subdirectory(libs/sokol)
 add_subdirectory(libs/lua)
@@ -40,6 +40,7 @@ endif()
 
 file(GLOB_RECURSE SUPERNOVA_SRCS core/*.cpp)
 file(GLOB RENDER_SOKOL_SRC renders/sokol/*.cpp)
+file(GLOB_RECURSE NET_SRCS net/*.cpp)
 
 add_library(
     cgclient
@@ -48,6 +49,7 @@ add_library(
 
     ${RENDER_SOKOL_SRC}
     ${SUPERNOVA_SRCS}
+    ${NET_SRCS}
 )
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Emscripten" OR CMAKE_SYSTEM_NAME STREQUAL "Linux")

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 if(NOT DEFINED APP_NAME)
-   set(APP_NAME cgclient)
+   set(APP_NAME cgclient-project)
 endif()
 
 project(${APP_NAME})
