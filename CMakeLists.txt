@@ -448,6 +448,7 @@ include_directories (${CG_ROOT}/engine/core/subsystem)
 include_directories (${CG_ROOT}/engine/core/texture)
 include_directories (${CG_ROOT}/engine/core/util)
 include_directories (${CG_ROOT}/engine/renders)
+include_directories (${CG_ROOT}/engine/global)
 
 add_subdirectory(${CG_ROOT}/engine)
 
@@ -506,7 +507,7 @@ set_target_properties(
     PROPERTIES
     ${PLATFORM_PROPERTIES}
     RESOURCE "${PLATFORM_RESOURCES}"
-    CXX_STANDARD 17
+    CXX_STANDARD 20
 )
 
 target_compile_options(

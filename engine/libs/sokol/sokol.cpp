@@ -25,6 +25,7 @@
 //#include "sokol_log.h"
 
 #ifdef SUPERNOVA_SOKOL
+    #define SOKOL_FETCH_IMPL
     #include "sokol_fetch.h"
     #include "sokol_glue.h"
 #endif

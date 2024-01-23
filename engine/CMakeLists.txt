@@ -38,9 +38,9 @@ endif()
 
 #add_definitions("-DPROJECT_ROOT=\"${PROJECT_ROOT}\"")
 
-file(GLOB_RECURSE SUPERNOVA_SRCS core/*.cpp)
 file(GLOB RENDER_SOKOL_SRC renders/sokol/*.cpp)
-file(GLOB_RECURSE NET_SRCS net/*.cpp)
+file(GLOB_RECURSE CORE_SRCS core/*.cpp)
+file(GLOB NET_SRCS libs/net/*.cpp)
 
 add_library(
     cgclient
@@ -48,7 +48,7 @@ add_library(
     STATIC
 
     ${RENDER_SOKOL_SRC}
-    ${SUPERNOVA_SRCS}
+    ${CORE_SRCS}
     ${NET_SRCS}
 )
 
@@ -73,5 +73,5 @@ set_target_properties(
 
     PROPERTIES
 
-    CXX_STANDARD 17
+    CXX_STANDARD 20
 )
