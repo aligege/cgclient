@@ -15,6 +15,7 @@ include_directories(libs/tinygltf)
 include_directories(libs/tinyxml2)
 include_directories(libs/box2d/include/box2d)
 include_directories(libs/joltphysics)
+include_directories(libs/net)
 include_directories(global)
 
 add_subdirectory(libs/sokol)
