@@ -16,7 +16,11 @@ void init(){
     Engine::setScalingMode(Scaling::FITWIDTH);
     Engine::setCanvasSize(1000,480);
     Engine::setScene(&scene);
-    cg::global::phttp->get("http://www.baidu.com", [](const char* data){
+    cg::global::phttptool->get("http://www.baidu.com", [](const char* data){
         std::cout << data << std::endl;
     });
+    cg::global::phttptool->post("http://10.10.1.90:8088", [](const char* data){
+        std::cout << data << std::endl;
+    });
+    
 }

@@ -2,31 +2,31 @@
 
 include_directories(shaders)
 
-include_directories(libs)
-include_directories(libs/luabridge3)
-include_directories(libs/json)
+include_directories(thirdparty)
+include_directories(thirdparty/luabridge3)
+include_directories(thirdparty/json)
 
-include_directories(libs/sokol)
-include_directories(libs/lua)
-include_directories(libs/stb)
-include_directories(libs/soloud/include)
-include_directories(libs/tinyobjloader)
-include_directories(libs/tinygltf)
-include_directories(libs/tinyxml2)
-include_directories(libs/box2d/include/box2d)
-include_directories(libs/joltphysics)
-include_directories(libs/net)
+include_directories(thirdparty/sokol)
+include_directories(thirdparty/lua)
+include_directories(thirdparty/stb)
+include_directories(thirdparty/soloud/include)
+include_directories(thirdparty/tinyobjloader)
+include_directories(thirdparty/tinygltf)
+include_directories(thirdparty/tinyxml2)
+include_directories(thirdparty/box2d/include/box2d)
+include_directories(thirdparty/joltphysics)
+include_directories(net)
 include_directories(global)
 
-add_subdirectory(libs/sokol)
-add_subdirectory(libs/lua)
-add_subdirectory(libs/stb)
-add_subdirectory(libs/soloud)
-add_subdirectory(libs/tinyobjloader)
-add_subdirectory(libs/tinygltf)
-add_subdirectory(libs/tinyxml2)
-add_subdirectory(libs/box2d)
-add_subdirectory(libs/joltphysics)
+add_subdirectory(thirdparty/sokol)
+add_subdirectory(thirdparty/lua)
+add_subdirectory(thirdparty/stb)
+add_subdirectory(thirdparty/soloud)
+add_subdirectory(thirdparty/tinyobjloader)
+add_subdirectory(thirdparty/tinygltf)
+add_subdirectory(thirdparty/tinyxml2)
+add_subdirectory(thirdparty/box2d)
+add_subdirectory(thirdparty/joltphysics)
 
 if(DEFINED NO_LUA_INIT)
     add_definitions("-DNO_LUA_INIT=${NO_LUA_INIT}")
@@ -41,7 +41,17 @@ endif()
 
 file(GLOB RENDER_SOKOL_SRC renders/sokol/*.cpp)
 file(GLOB_RECURSE CORE_SRCS core/*.cpp)
-file(GLOB NET_SRCS libs/net/*.cpp)
+file(GLOB NET_SRCS net/*.cpp)
+
+add_library(libcurl STATIC IMPORTED GLOBAL)
+set_target_properties(libcurl PROPERTIES
+  IMPORTED_LOCATION ${CMAKE_CURRENT_LIST_DIR}/libs/win64/libcurl.lib
+)
+
+add_library(libssl STATIC IMPORTED GLOBAL)
+set_target_properties(libssl PROPERTIES
+  IMPORTED_LOCATION ${CMAKE_CURRENT_LIST_DIR}/libs/win64/libssl.lib
+)
 
 add_library(
     cgclient
@@ -65,7 +75,7 @@ endif()
 
 target_link_libraries(
     cgclient
-    ws2_32
+    ws2_32 libcurl libssl
     sokol lua stb tinyobjloader tinygltf tinyxml2 soloud box2d joltphysics
 )
 

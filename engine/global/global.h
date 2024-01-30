@@ -1,11 +1,11 @@
-#include "net/http.h"
+#include "../net/httptool.h"
 
 namespace cg
 {
     class global
     {
         public:
-            static http* phttp;
+            static httptool* phttptool;
     };
-    http* global::phttp = new http();
+    httptool* global::phttptool = new httptool();
 }
