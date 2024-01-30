@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "curl/curl.h"
+//#include "curl/curl.h"
 
 using namespace http;
 namespace cg
@@ -49,61 +49,61 @@ namespace cg
 
     void httptool::post(const char *url, void (*callback)(const char *))
     {
-        try
-        {
-            CURL *pcurl;
-            pcurl = curl_easy_init();
-            if (NULL == pcurl)
-            {
-                Log::debug("curl_easy_init error");
-                return;
-            }
-            curl_slist *plist = nullptr;
-            plist = curl_slist_append(plist, "Content-Type:application/json;charset=UTF-8");
-            plist = curl_slist_append(plist, "Accept:application/json, text/javascript, */*; q=0.01");
-            plist = curl_slist_append(plist, "Accept-Language:zh-CN,zh;q=0.8");
-            curl_easy_setopt(pcurl, CURLOPT_HTTPHEADER, plist);
+        // try
+        // {
+        //     CURL *pcurl;
+        //     pcurl = curl_easy_init();
+        //     if (NULL == pcurl)
+        //     {
+        //         Log::debug("curl_easy_init error");
+        //         return;
+        //     }
+        //     curl_slist *plist = nullptr;
+        //     plist = curl_slist_append(plist, "Content-Type:application/json;charset=UTF-8");
+        //     plist = curl_slist_append(plist, "Accept:application/json, text/javascript, */*; q=0.01");
+        //     plist = curl_slist_append(plist, "Accept-Language:zh-CN,zh;q=0.8");
+        //     curl_easy_setopt(pcurl, CURLOPT_HTTPHEADER, plist);
 
-            curl_easy_setopt(pcurl, CURLOPT_URL, url);
+        //     curl_easy_setopt(pcurl, CURLOPT_URL, url);
 
-            curl_easy_setopt(pcurl, CURLOPT_HEADER, 0);
-            curl_easy_setopt(pcurl, CURLOPT_FOLLOWLOCATION, 1);
-            curl_easy_setopt(pcurl, CURLOPT_NOSIGNAL, 1);
+        //     curl_easy_setopt(pcurl, CURLOPT_HEADER, 0);
+        //     curl_easy_setopt(pcurl, CURLOPT_FOLLOWLOCATION, 1);
+        //     curl_easy_setopt(pcurl, CURLOPT_NOSIGNAL, 1);
 
-            curl_easy_setopt(pcurl, CURLOPT_WRITEFUNCTION, callback);
-            curl_easy_setopt(pcurl, CURLOPT_WRITEDATA, (void *)callback);
+        //     curl_easy_setopt(pcurl, CURLOPT_WRITEFUNCTION, callback);
+        //     curl_easy_setopt(pcurl, CURLOPT_WRITEDATA, (void *)callback);
 
-            curl_easy_setopt(pcurl, CURLOPT_VERBOSE, 1);
+        //     curl_easy_setopt(pcurl, CURLOPT_VERBOSE, 1);
 
-            std::string strJson = "{\"name\":\"test\",\"age\":20}";
+        //     std::string strJson = "{\"name\":\"test\",\"age\":20}";
 
-            curl_easy_setopt(pcurl, CURLOPT_POST, 1);
-            curl_easy_setopt(pcurl, CURLOPT_POSTFIELDS, strJson.c_str());
-            curl_easy_setopt(pcurl, CURLOPT_POSTFIELDSIZE, strJson.length());
+        //     curl_easy_setopt(pcurl, CURLOPT_POST, 1);
+        //     curl_easy_setopt(pcurl, CURLOPT_POSTFIELDS, strJson.c_str());
+        //     curl_easy_setopt(pcurl, CURLOPT_POSTFIELDSIZE, strJson.length());
 
-            CURLcode res = curl_easy_perform(pcurl);
+        //     CURLcode res = curl_easy_perform(pcurl);
 
-            if (res != CURLE_OK)
-            {
-                Log::debug("curl_easy_perform error");
-            }
-            long response_code=0;
-            res=curl_easy_getinfo(pcurl, CURLINFO_RESPONSE_CODE, &response_code);
-            if((res == CURLE_OK) && (response_code==200||response_code==201))
-            {
-                Log::debug("curl_easy_getinfo success");
-            }
-            else
-            {
-                Log::debug("curl_easy_getinfo error");
-            }
+        //     if (res != CURLE_OK)
+        //     {
+        //         Log::debug("curl_easy_perform error");
+        //     }
+        //     long response_code=0;
+        //     res=curl_easy_getinfo(pcurl, CURLINFO_RESPONSE_CODE, &response_code);
+        //     if((res == CURLE_OK) && (response_code==200||response_code==201))
+        //     {
+        //         Log::debug("curl_easy_getinfo success");
+        //     }
+        //     else
+        //     {
+        //         Log::debug("curl_easy_getinfo error");
+        //     }
 
-            curl_slist_free_all(plist);
-            curl_easy_cleanup(pcurl);
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << '\n';
-        }
+        //     curl_slist_free_all(plist);
+        //     curl_easy_cleanup(pcurl);
+        // }
+        // catch(const std::exception& e)
+        // {
+        //     std::cerr << e.what() << '\n';
+        // }
     }
 }
