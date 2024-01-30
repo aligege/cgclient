@@ -65,7 +65,7 @@ endif()
 
 target_link_libraries(
     cgclient
-
+    ws2_32
     sokol lua stb tinyobjloader tinygltf tinyxml2 soloud box2d joltphysics
 )
 

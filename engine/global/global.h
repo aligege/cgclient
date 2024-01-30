@@ -5,6 +5,7 @@ namespace cg
     class global
     {
         public:
-            static cg::http http;
+            static http* phttp;
     };
+    http* global::phttp = new http();
 }

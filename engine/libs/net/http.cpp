@@ -1,56 +1,68 @@
-#include"http.h"
+#include "http.h"
+#include "Log.h"
+#include "HTTPRequest.hpp"
+
 #include <iostream>
 #include <fstream>
 #include <string>
 
-#include <sokol/sokol_fetch.h>
-#include <sokol/sokol_log.h>
-
-#define MAX_FILE_SIZE (1024 * 1024)
-
-
-cg::http::http()
+using namespace http;
+namespace cg
 {
-    sfetch_desc_t desc = {0};
-    desc.logger.func=slog_func;
-    sfetch_setup(&desc);
-}
-cg::http::~http()
-{
-    sfetch_shutdown();
-}
+    http::http()
+    {
 
-void cg::http::get(const char* url, void (*callback)(const char*))
-{
-    //通过sokol_fetch实现http请求
-    sfetch_request_t fetch = {0};
-    fetch.path = url;
-    fetch.callback = [](const sfetch_response_t* response) {
-        if (response->fetched) {
-                // data has been loaded, and is available via the
-                // sfetch_range_t struct item 'data':
-                const void* ptr = response->data.ptr;
-                size_t num_bytes = response->data.size;
+    }
+    http::~http()
+    {
+
+    }
+
+    void http::get(const char *url, void (*callback)(const char *))
+    {
+        try
+        {
+            Request request(url);
+            Response response = request.send("GET");
+            if (response.status.code == Status::Ok)
+            {
+                auto body = (char*)response.body.data();
+                Log::debug("http get success:s%",body);
+                callback(body);
             }
-            if (response->finished) {
-                // the 'finished'-flag is the catch-all flag for when the request
-                // is finished, no matter if loading was successful or failed,
-                // so any cleanup-work should happen here...
-                if (response->failed) {
-                    // 'failed' is true in (addition to 'finished') if something
-                    // went wrong (file doesn't exist, or less bytes could be
-                    // read from the file than expected)
-                }
+            else
+            {
+                Log::debug("http get error");
+                callback("http get error");
             }
-    };
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+    }
 
-    static uint8_t buf[MAX_FILE_SIZE];
-
-    sfetch_send(&fetch);
-    sfetch_dowork();
-}
-
-void cg::http::post(const char* url, void (*callback)(const char*))
-{
-    
+    void http::post(const char *url, void (*callback)(const char *))
+    {
+        try
+        {
+            Request request(url);
+            Response response = request.send("GET");
+            if (response.status.code == Status::Ok)
+            {
+                auto body = (char*)response.body.data();
+                Log::debug("http get success:s%",body);
+                callback(body);
+            }
+            else
+            {
+                Log::debug("http get error");
+                callback("http get error");
+            }
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+    }
 }
