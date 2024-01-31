@@ -16,7 +16,7 @@ void init(){
     Engine::setScalingMode(Scaling::FITWIDTH);
     Engine::setCanvasSize(1000,480);
     Engine::setScene(&scene);
-    cg::global::phttptool->get("http://www.baidu.com", [](const char* data){
+    cg::global::phttptool->get("http://www.baidu.com",nullptr, [](const char* data){
         std::cout << data << std::endl;
     });
     //http://127.0.0.1:6002/logic/login

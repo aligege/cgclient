@@ -209,19 +209,19 @@ namespace cg
         }
         else if (type == EJsonType_Int)
         {
-            value = *(int *)data;
+            value = std::to_string(*(int *)data);
         }
         else if (type == EJsonType_Long)
         {
-            value = *(long *)data;
+            value = std::to_string(*(long *)data);
         }
         else if (type == EJsonType_Float)
         {
-            value = *(float *)data;
+            value = std::to_string(*(float *)data);
         }
         else if (type == EJsonType_Double)
         {
-            value = *(double *)data;
+            value =std::to_string(*(double *)data);
         }
         else if (type == EJsonType_String)
         {

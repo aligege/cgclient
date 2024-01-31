@@ -10,7 +10,7 @@ namespace cg
             httptool();
             virtual ~httptool();
         public:
-            void get(const char* url, void (*callback)(const char*));
+            void get(const char* url,jsonobject* pjoheader, void (*callback)(const char*));
             void post(const char* url, jsonobject* pjodata,jsonobject* pjoheader,void (*callback)(const char*));
     };
 }
