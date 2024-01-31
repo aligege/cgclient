@@ -1,13 +1,12 @@
 #include "httptool.h"
 #include "Log.h"
-#include "HTTPRequest.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <string>
 #include "curl/curl.h"
+#include "json/jsonobject.h"
 
-using namespace http;
 namespace cg
 {
     httptool::httptool()
@@ -78,7 +77,7 @@ namespace cg
         }
     }
 
-    void httptool::post(const char *url, const char* jsonStr, void (*callback)(const char *))
+    void httptool::post(const char *url, jsonobject* pjodata=nullptr,jsonobject* pjoheader=nullptr, void (*callback)(const char *)=nullptr)
     {
         try
         {
@@ -93,7 +92,11 @@ namespace cg
             plist = curl_slist_append(plist, "Content-Type:application/x-www-form-urlencoded;charset=UTF-8");
             plist = curl_slist_append(plist, "Accept:application/json, text/javascript, */*; q=0.01");
             plist = curl_slist_append(plist, "Accept-Language:zh-CN,zh;q=0.8");
-            plist = curl_slist_append(plist, "Uid:1008611");
+            if(pjoheader!=nullptr)
+            {
+                const char* strheader=pjoheader->toString();
+                plist = curl_slist_append(plist, strheader);
+            }
             curl_easy_setopt(pcurl, CURLOPT_HTTPHEADER, plist);
 
             curl_easy_setopt(pcurl, CURLOPT_URL, url);
@@ -107,12 +110,12 @@ namespace cg
 
             curl_easy_setopt(pcurl, CURLOPT_VERBOSE, 1);
 
-            auto len=strlen(jsonStr);
-            if(len>0)
+            if(pjodata!=nullptr)
             {
+                const char* jsonStr=pjodata->toString();
                 curl_easy_setopt(pcurl, CURLOPT_POST, 1);
                 curl_easy_setopt(pcurl, CURLOPT_POSTFIELDS, jsonStr);
-                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDSIZE, len);
+                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDSIZE, strlen(jsonStr));
             }
 
             CURLcode res = curl_easy_perform(pcurl);

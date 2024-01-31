@@ -1,3 +1,7 @@
+#ifndef _CG_HTTP_TOOL_H_
+#define _CG_HTTP_TOOL_H_
+
+#include "json/jsonObject.h"
 namespace cg
 {
     class httptool
@@ -7,6 +11,8 @@ namespace cg
             virtual ~httptool();
         public:
             void get(const char* url, void (*callback)(const char*));
-            void post(const char* url, const char* jsonStr,std::unordered_map<std::string, std::string>& headers,void (*callback)(const char*));
+            void post(const char* url, jsonobject* pjodata,jsonobject* pjoheader,void (*callback)(const char*));
     };
 }
+
+#endif // _CG_HTTP_TOOL_H_

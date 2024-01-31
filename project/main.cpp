@@ -4,7 +4,7 @@ using namespace cg;
 #include "Image.h"
 #include <iostream>
 #include "global.h"
-
+#include "json/jsonobject.h"
 Scene scene;
 Image image(&scene);
 
@@ -21,7 +21,9 @@ void init(){
     });
     //http://127.0.0.1:6002/logic/login
     //http://10.10.1.41/user/skin/ranks
-    cg::global::phttptool->post("http://10.10.1.41/user/skin/ranks","", [](const char* data){
+    jsonobject json("Uid");
+    json.setLong(1008611);
+    cg::global::phttptool->post("http://10.10.1.41/user/skin/ranks",nullptr,&json, [](const char* data){
         std::cout << data << std::endl;
     });
     

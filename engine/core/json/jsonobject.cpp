@@ -2,13 +2,15 @@
 #include<string>
 #include<vector>
 #include<unordered_map>
+#include<string.h>
 
 namespace cg
 {
-    jsonobject::jsonobject()
+    jsonobject::jsonobject(const char *key)
     {
-        data = nullptr;
-        type = EJsonType_Null;
+        this->key = key;
+        this->data = nullptr;
+        this->type = EJsonType_Null;
     }
     jsonobject::~jsonobject()
     {
@@ -50,23 +52,37 @@ namespace cg
         data = new std::string(value);
         type = EJsonType_String;
     }
-    void jsonobject::setArray()
-    {
-        clear();
-        data = new std::vector<jsonobject *>();
-        type = EJsonType_Array;
-    }
-    void jsonobject::setObject()
-    {
-        clear();
-        data = new std::unordered_map<std::string, jsonobject *>();
-        type = EJsonType_Object;
-    }
     void jsonobject::setNull()
     {
         clear();
         data = nullptr;
         type = EJsonType_Null;
+    }
+    void jsonobject::addToObject(jsonobject *value)
+    {
+        if (type != EJsonType_Object)
+        {
+            clear();
+        }
+        if(this->data==nullptr)
+        {
+            this->data=new std::unordered_map<std::string, jsonobject *>();
+        }
+        ((std::unordered_map<std::string, jsonobject *> *)data)->insert(std::make_pair(value->key, value));
+        type == EJsonType_Object;
+    }
+    void jsonobject::addToArray(jsonobject *value)
+    {
+        if (type != EJsonType_Array)
+        {
+            clear();
+        }
+        if(this->data==nullptr)
+        {
+            this->data=new std::vector<jsonobject *>();
+        }
+        ((std::vector<jsonobject *> *)data)->push_back(value);
+        type == EJsonType_Array;
     }
     bool jsonobject::getBool()
     {
@@ -183,169 +199,61 @@ namespace cg
         data = nullptr;
         type = EJsonType_Null;
     }
-    void jsonobject::print()
+    const char *jsonobject::toString()
     {
+        std::string key=this->key;
+        std::string value="";
         if (type == EJsonType_Bool)
         {
-            printf("%s", (*(bool *)data) ? "true" : "false");
+            value = (*(bool *)data) ? "true" : "false";
         }
         else if (type == EJsonType_Int)
         {
-            printf("%d", *(int *)data);
+            value = *(int *)data;
         }
         else if (type == EJsonType_Long)
         {
-            printf("%ld", *(long *)data);
+            value = *(long *)data;
         }
         else if (type == EJsonType_Float)
         {
-            printf("%f", *(float *)data);
+            value = *(float *)data;
         }
         else if (type == EJsonType_Double)
         {
-            printf("%lf", *(double *)data);
+            value = *(double *)data;
         }
         else if (type == EJsonType_String)
         {
-            printf("%s", ((std::string *)data)->c_str());
+            value = *(std::string *)data;
         }
         else if (type == EJsonType_Array)
         {
-            printf("[");
+            value = "[";
             std::vector<jsonobject *> *array = (std::vector<jsonobject *> *)data;
             for (auto it = array->begin(); it != array->end(); it++)
             {
-                (*it)->print();
-                if (it != array->end() - 1)
-                {
-                    printf(",");
-                }
+                value += (*it)->toString();
+                value += ",";
             }
-            printf("]");
+            value += ']';
         }
         else if (type == EJsonType_Object)
         {
-            printf("{");
+            value = "{";
             std::unordered_map<std::string, jsonobject *> *object = (std::unordered_map<std::string, jsonobject *> *)data;
             for (auto it = object->begin(); it != object->end(); it++)
             {
-                printf("\"%s\":", it->first.c_str());
-                it->second->print();
-                if (it != object->end())
-                {
-                    printf(",");
-                }
+                value += it->second->toString();
+                value += ",";
             }
-            printf("}");
+            value += '}';
         }
         else if (type == EJsonType_Null)
         {
-            printf("null");
+            value = "null";
         }
+        std::string result=key+":"+value;
+        return result.c_str();
     }
-    void jsonobject::parse(const char *jsonStr)
-    {
-        clear();
-        if (jsonStr == nullptr)
-        {
-            return;
-        }
-        int len = strlen(jsonStr);
-        if (len == 0)
-        {
-            return;
-        }
-        int index = 0;
-        while (index < len)
-        {
-            if (jsonStr[index] == '{')
-            {
-                index++;
-                setObject();
-                while (index < len)
-                {
-                    if (jsonStr[index] == '}')
-                    {
-                        index++;
-                        break;
-                    }
-                    else if (jsonStr[index] == ',')
-                    {
-                        index++;
-                    }
-                    else if (jsonStr[index] == '"')
-                    {
-                        index++;
-                        std::string key;
-                        while (index < len)
-                        {
-                            if (jsonStr[index] == '"')
-                            {
-                                index++;
-                                break;
-                            }
-                            else
-                            {
-                                key += jsonStr[index];
-                                index++;
-                            }
-                        }
-                        if (index < len)
-                        {
-                            if (jsonStr[index] == ':')
-                            {
-                                index++;
-                                jsonobject *value = new jsonobject();
-                                value->parse(jsonStr + index);
-                                index += strlen(value->toString());
-                                ((std::unordered_map<std::string, jsonobject *> *)data)->insert(std::make_pair(key, value));
-                            }
-                        }
-                    }
-                }
-            }
-            else if (jsonStr[index] == '[')
-            {
-                index++;
-                setArray();
-                while (index < len)
-                {
-                    if (jsonStr[index] == ']')
-                    {
-                        index++;
-                        break;
-                    }
-                    else if (jsonStr[index] == ',')
-                    {
-                        index++;
-                    }
-                    else
-                    {
-                        jsonobject *value = new jsonobject();
-                        value->parse(jsonStr + index);
-                        index += strlen(value->toString());
-                        ((std::vector<jsonobject *> *)data)->push_back(value);
-                    }
-                }
-            }
-            else if (jsonStr[index] == '"')
-            {
-                index++;
-                std::string value;
-                while (index < len)
-                {
-                    if (jsonStr[index] == '"')
-                    {
-                        index++;
-                        break;
-                    }
-                    else
-                    {
-                        value += jsonStr[index];
-                        index++;
-                    }
-                }
-                setString(value.c_str());
-            }
-            else if (jsonStr[index
 }

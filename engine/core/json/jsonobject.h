@@ -1,6 +1,6 @@
 #ifndef __JSONOBJECT_H__
 #define __JSONOBJECT_H__
-
+#include <string>
 namespace cg
 {
     enum EJsonType
@@ -18,9 +18,10 @@ namespace cg
     class jsonobject
     {
     public:
-        jsonobject();
+        jsonobject(const char* key);
         ~jsonobject();
     protected:
+        std::string key;
         void* data=nullptr;
         EJsonType type=EJsonType_Null;
     public:
@@ -30,9 +31,9 @@ namespace cg
         void setFloat(float value);
         void setDouble(double value);
         void setString(const char* value);
-        void setArray();
-        void setObject();
         void setNull();
+        void addToObject(jsonobject* value);
+        void addToArray(jsonobject* value);
         bool getBool();
         int getInt();
         long getLong();
@@ -43,8 +44,6 @@ namespace cg
         jsonobject* getObject();
         EJsonType getType();
         void clear();
-        void print();
-        void parse(const char* jsonStr);
         const char* toString();
     };
 }
