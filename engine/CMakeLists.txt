@@ -43,9 +43,11 @@ file(GLOB RENDER_SOKOL_SRC renders/sokol/*.cpp)
 file(GLOB_RECURSE CORE_SRCS core/*.cpp)
 file(GLOB NET_SRCS net/*.cpp)
 
-add_library(libcurl STATIC IMPORTED GLOBAL)
+add_library(libcurl SHARED IMPORTED GLOBAL)
+
 set_target_properties(libcurl PROPERTIES
-  IMPORTED_LOCATION ${CMAKE_CURRENT_LIST_DIR}/libs/win64/libcurl.lib
+  IMPORTED_LOCATION ${CMAKE_CURRENT_LIST_DIR}/libs/win64/libcurl.dll
+  IMPORTED_IMPLIB ${CMAKE_CURRENT_LIST_DIR}/libs/win64/libcurl.lib
 )
 
 add_library(libssl STATIC IMPORTED GLOBAL)
