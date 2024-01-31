@@ -21,7 +21,7 @@ void init(){
     });
     //http://127.0.0.1:6002/logic/login
     //http://10.10.1.41/user/skin/ranks
-    cg::global::phttptool->post("http://127.0.0.1:6002/logic/login","", [](const char* data){
+    cg::global::phttptool->post("http://10.10.1.41/user/skin/ranks","", [](const char* data){
         std::cout << data << std::endl;
     });
     
