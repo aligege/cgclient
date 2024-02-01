@@ -168,7 +168,7 @@ namespace cg
             std::cerr << e.what() << '\n';
         }
     }
-    void httptool::post(const char *url, jsonobject* pjodata,jsonobject* pjoheader, void (*callback)(httpresponse*))
+    httpresponse* httptool::post(const char *url, jsonobject* pjodata,jsonobject* pjoheader)
     {
         try
         {
@@ -177,14 +177,15 @@ namespace cg
             if (NULL == pcurl)
             {
                 Log::debug("curl_easy_init error");
-                return;
+                return nullptr;
             }
 
             curl_slist *plist = nullptr;
             plist = curl_slist_append(plist, "Content-Type:application/x-www-form-urlencoded");
+            std::string strheader="";
             if(pjoheader!=nullptr)
             {
-                auto strheader=pjoheader->toString();
+                strheader=pjoheader->toString();
                 plist = curl_slist_append(plist, strheader.c_str());
             }
             curl_easy_setopt(pcurl, CURLOPT_HTTPHEADER, plist);
@@ -205,15 +206,15 @@ namespace cg
             curl_easy_setopt(pcurl, CURLOPT_VERBOSE, 1);
             //设置请求为post请求
             curl_easy_setopt(pcurl, CURLOPT_POST, 1);
-
+            std::string postJson="";
             if(pjodata!=nullptr)
             {
-                auto jsonStr=pjodata->toString();
+                postJson=pjodata->toString();
                 //设置post请求的参数
-                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDS, jsonStr.c_str());
-                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDSIZE, jsonStr.length());
+                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDS, postJson.c_str());
+                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDSIZE, postJson.length());
             }
-
+            Log::debug("post url-%s\nheaders-%s\npostJson-%s\n",url,strheader.c_str(),postJson.c_str());
             //设置超时时间
             //curl_easy_setopt(pcurl, CURLOPT_CONNECTTIMEOUT, 6);
             //curl_easy_setopt(pcurl, CURLOPT_TIMEOUT, 6);
@@ -235,10 +236,11 @@ namespace cg
                 Log::debug("curl_easy_getinfo error");
             }
             pres->pheader->parse();
-            callback(pres);
+            Log::debug("post url end-%s\ndata-%s\n",url,pres->memory);
 
             curl_slist_free_all(plist);
             curl_easy_cleanup(pcurl);
+            return pres;
         }
         catch(const std::exception& e)
         {

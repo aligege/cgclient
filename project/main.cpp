@@ -20,10 +20,12 @@ void init(){
     //http://10.10.1.41/user/skin/ranks
     jsonobject json("Uid");
     json.setLong(1008611);
-    cg::global::phttptool->post("http://10.10.1.41/user/skin/ranks",&json,&json, [](httpresponse* pres){
+    auto pres = cg::global::phttptool->post("http://127.0.0.1:6002/logic/login",nullptr,&json);
+    if(pres!=nullptr)
+    {
         auto code = pres->pheader->get("Code");
         Log::debug("code:%s\ndata:%s\n",code.c_str(),pres->memory);
         delete pres;
-    });
+    }
     
 }

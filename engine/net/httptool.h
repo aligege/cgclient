@@ -60,7 +60,7 @@ namespace cg
             virtual ~httptool();
         public:
             void get(const char* url,jsonobject* pjoheader, void (*callback)(httpresponse*));
-            void post(const char* url, jsonobject* pjodata,jsonobject* pjoheader,void (*callback)(httpresponse*));
+            httpresponse* post(const char* url, jsonobject* pjodata,jsonobject* pjoheader);
         protected:
             static size_t _onData(void *contents, size_t size, size_t nmemb, void *userp);
             static size_t _onHeader(void *contents, size_t size, size_t nmemb, void *userp);
