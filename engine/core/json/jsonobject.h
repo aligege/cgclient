@@ -18,6 +18,7 @@ namespace cg
     class jsonobject
     {
     public:
+        jsonobject();
         jsonobject(const char* key);
         ~jsonobject();
     protected:
@@ -39,12 +40,12 @@ namespace cg
         long getLong();
         float getFloat();
         double getDouble();
-        const char* getString();
+        std::string& getString();
         jsonobject* getArray();
-        jsonobject* getObject();
+        jsonobject* getObject(const char* key);
         EJsonType getType();
         void clear();
-        const char* toString();
+        std::string toString();
     };
 }
 #endif // __JSONOBJECT_H__

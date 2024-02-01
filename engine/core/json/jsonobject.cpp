@@ -3,9 +3,17 @@
 #include<vector>
 #include<unordered_map>
 #include<string.h>
+#include<assert.h>
 
 namespace cg
 {
+    //顶层数据没有key
+    jsonobject::jsonobject()
+    {
+        this->key = "";
+        this->data = nullptr;
+        this->type = EJsonType_Null;
+    }
     jsonobject::jsonobject(const char *key)
     {
         this->key = key;
@@ -69,7 +77,7 @@ namespace cg
             this->data=new std::unordered_map<std::string, jsonobject *>();
         }
         ((std::unordered_map<std::string, jsonobject *> *)data)->insert(std::make_pair(value->key, value));
-        type == EJsonType_Object;
+        type = EJsonType_Object;
     }
     void jsonobject::addToArray(jsonobject *value)
     {
@@ -124,13 +132,10 @@ namespace cg
         }
         return 0;
     }
-    const char *jsonobject::getString()
+    std::string& jsonobject::getString()
     {
-        if (type == EJsonType_String)
-        {
-            return ((std::string *)data)->c_str();
-        }
-        return "";
+        assert(type == EJsonType_String);
+        return *(std::string *)data;
     }
     jsonobject *jsonobject::getArray()
     {
@@ -140,13 +145,13 @@ namespace cg
         }
         return nullptr;
     }
-    jsonobject *jsonobject::getObject()
+    jsonobject *jsonobject::getObject(const char *key)
     {
-        if (type == EJsonType_Object)
+        if (type != EJsonType_Object)
         {
-            return (jsonobject *)data;
+            return nullptr;
         }
-        return nullptr;
+        return ((std::unordered_map<std::string, jsonobject *> *)data)->at(key);
     }
     EJsonType jsonobject::getType()
     {
@@ -199,7 +204,7 @@ namespace cg
         data = nullptr;
         type = EJsonType_Null;
     }
-    const char *jsonobject::toString()
+    std::string jsonobject::toString()
     {
         std::string key=this->key;
         std::string value="";
@@ -254,6 +259,6 @@ namespace cg
             value = "null";
         }
         std::string result=key+":"+value;
-        return result.c_str();
+        return result;
     }
 }

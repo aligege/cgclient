@@ -9,6 +9,50 @@
 
 namespace cg
 {
+    bool httpheader::parse()
+    {
+        if(size==0)
+        {
+            return false;
+        }
+        std::string strheader(memory);
+        std::string strkey;
+        std::string strvalue;
+        int index=0;
+        int index2=0;
+        int index3=0;
+        while(index<size)
+        {
+            index2=strheader.find(": ",index);
+            auto dt = 1;
+            if(index2==-1)
+            {
+                dt=0;
+                index2=strheader.find(":",index);
+                if(index2==-1)
+                {
+                    break;
+                }
+            }
+            strkey=strheader.substr(index,index2-index);
+            auto i = strkey.find_last_of("\r\n");
+            if(i!=-1)
+            {
+                strkey=strkey.substr(i+1);
+            }
+            index3=strheader.find("\r\n",index2);
+            if(index3==-1)
+            {
+                break;
+            }
+            strvalue=strheader.substr(index2+1+dt,index3-index2-1-dt);
+            auto jo = new jsonobject(strkey.c_str());
+            jo->setString(strvalue.c_str());
+            jsonheader.addToObject(jo);
+            index=index3+2;
+        }
+        return true;
+    }
     httptool::httptool()
     {
         CURLcode res = curl_global_init(CURL_GLOBAL_ALL);
@@ -22,14 +66,47 @@ namespace cg
         curl_global_cleanup();
     }
     //get请求和post请求数据响应函数
-    size_t req_reply(void *ptr, size_t size, size_t nmemb, void *stream)
+    size_t httptool::_onData(void *contents, size_t size, size_t nmemb, void *userp)
     {
-        //在注释的里面可以打印请求流，cookie的信息
-        std::string *str = (std::string*)stream;
-        (*str).append((char*)ptr, size*nmemb);
-        return size * nmemb;
+        size_t realsize = size * nmemb;
+        auto pres = (httpresponse *)userp;
+        
+        // 注意这里根据每次被调用获得的数据重新动态分配缓存区的大小
+        char *ptr = (char *)realloc(pres->memory, pres->size + realsize + 1); 
+        if(ptr == nullptr) {
+            /* out of memory! */ 
+            printf("not enough memory (realloc returned NULL)\n");
+            return 0;
+        }
+        
+        pres->memory = ptr;
+        memcpy(&(pres->memory[pres->size]), contents, realsize);
+        pres->size += realsize;
+        pres->memory[pres->size] = 0;
+        
+        return realsize;
     }
-    void httptool::get(const char *url,jsonobject* pjoheader, void (*callback)(const char *))
+    size_t httptool::_onHeader(void *contents, size_t size, size_t nmemb, void *userp)
+    {
+        size_t realsize = size * nmemb;
+        auto pheader = ((httpresponse *)userp)->pheader;
+        
+        // 注意这里根据每次被调用获得的数据重新动态分配缓存区的大小
+        char *ptr = (char *)realloc(pheader->memory, pheader->size + realsize + 1); 
+        if(ptr == NULL) {
+            /* out of memory! */ 
+            printf("not enough memory (realloc returned NULL)\n");
+            return 0;
+        }
+        
+        pheader->memory = ptr;
+        memcpy(&(pheader->memory[pheader->size]), contents, realsize);
+        pheader->size += realsize;
+        pheader->memory[pheader->size] = 0;
+        
+        return realsize;
+    }
+    void httptool::get(const char *url,jsonobject* pjoheader, void (*callback)(httpresponse*))
     {
         try
         {
@@ -40,27 +117,30 @@ namespace cg
                 Log::debug("curl_easy_init error");
                 return;
             }
+
             curl_slist *plist = nullptr;
-            plist = curl_slist_append(plist, "Content-Type:application/x-www-form-urlencoded;charset=UTF-8");
-            plist = curl_slist_append(plist, "Accept:application/json, text/javascript, */*; q=0.01");
-            plist = curl_slist_append(plist, "Accept-Language:zh-CN,zh;q=0.8");
+            plist = curl_slist_append(plist, "Content-Type:application/x-www-form-urlencoded");
             if(pjoheader!=nullptr)
             {
-                const char* strheader=pjoheader->toString();
-                plist = curl_slist_append(plist, strheader);
+                auto strheader=pjoheader->toString();
+                plist = curl_slist_append(plist, strheader.c_str());
             }
             curl_easy_setopt(pcurl, CURLOPT_HTTPHEADER, plist);
 
             curl_easy_setopt(pcurl, CURLOPT_URL, url);
 
-            curl_easy_setopt(pcurl, CURLOPT_HEADER, 0);
             curl_easy_setopt(pcurl, CURLOPT_FOLLOWLOCATION, 1);
             curl_easy_setopt(pcurl, CURLOPT_NOSIGNAL, 1);
 
-            curl_easy_setopt(pcurl, CURLOPT_WRITEFUNCTION, callback);
-            curl_easy_setopt(pcurl, CURLOPT_WRITEDATA, (void *)callback);
+            auto* pres=new httpresponse();
+            curl_easy_setopt(pcurl, CURLOPT_HEADER, 0);
+            curl_easy_setopt(pcurl, CURLOPT_HEADERFUNCTION, &httptool::_onHeader);
+            curl_easy_setopt(pcurl, CURLOPT_HEADERDATA, pres);
+            curl_easy_setopt(pcurl, CURLOPT_WRITEFUNCTION, &httptool::_onData);
+            curl_easy_setopt(pcurl, CURLOPT_WRITEDATA, pres);
 
             curl_easy_setopt(pcurl, CURLOPT_VERBOSE, 1);
+            curl_easy_setopt(pcurl, CURLOPT_HTTPGET, 1);
 
             CURLcode res = curl_easy_perform(pcurl);
 
@@ -78,7 +158,8 @@ namespace cg
             {
                 Log::debug("curl_easy_getinfo error");
             }
-
+            pres->pheader->parse();
+            callback(pres);
             curl_slist_free_all(plist);
             curl_easy_cleanup(pcurl);
         }
@@ -87,7 +168,7 @@ namespace cg
             std::cerr << e.what() << '\n';
         }
     }
-    void httptool::post(const char *url, jsonobject* pjodata,jsonobject* pjoheader, void (*callback)(const char *))
+    void httptool::post(const char *url, jsonobject* pjodata,jsonobject* pjoheader, void (*callback)(httpresponse*))
     {
         try
         {
@@ -98,28 +179,27 @@ namespace cg
                 Log::debug("curl_easy_init error");
                 return;
             }
+
             curl_slist *plist = nullptr;
-            plist = curl_slist_append(plist, "Content-Type:application/x-www-form-urlencoded;charset=UTF-8");
-            plist = curl_slist_append(plist, "Accept:application/json, text/javascript, */*; q=0.01");
-            plist = curl_slist_append(plist, "Accept-Language:zh-CN,zh;q=0.8");
+            plist = curl_slist_append(plist, "Content-Type:application/x-www-form-urlencoded");
             if(pjoheader!=nullptr)
             {
-                const char* strheader=pjoheader->toString();
-                plist = curl_slist_append(plist, strheader);
+                auto strheader=pjoheader->toString();
+                plist = curl_slist_append(plist, strheader.c_str());
             }
             curl_easy_setopt(pcurl, CURLOPT_HTTPHEADER, plist);
 
             curl_easy_setopt(pcurl, CURLOPT_URL, url);
 
-            ////不接收响应头数据0代表不接收 1代表接收
+            auto* pres=new httpresponse();
             curl_easy_setopt(pcurl, CURLOPT_HEADER, 0);
+            curl_easy_setopt(pcurl, CURLOPT_HEADERFUNCTION, &httptool::_onHeader);
+            curl_easy_setopt(pcurl, CURLOPT_HEADERDATA, pres);
+            curl_easy_setopt(pcurl, CURLOPT_WRITEFUNCTION, &httptool::_onData);
+            curl_easy_setopt(pcurl, CURLOPT_WRITEDATA, pres);
+
             curl_easy_setopt(pcurl, CURLOPT_FOLLOWLOCATION, 1);
             curl_easy_setopt(pcurl, CURLOPT_NOSIGNAL, 1);
-
-            //设置数据接收和写入函数
-            curl_easy_setopt(pcurl, CURLOPT_WRITEFUNCTION, callback);
-            //todo 这里有问题
-            curl_easy_setopt(pcurl, CURLOPT_WRITEDATA, (void *)callback);
 
             //CURLOPT_VERBOSE的值为1时，会显示详细的调试信息
             curl_easy_setopt(pcurl, CURLOPT_VERBOSE, 1);
@@ -128,10 +208,10 @@ namespace cg
 
             if(pjodata!=nullptr)
             {
-                const char* jsonStr=pjodata->toString();
+                auto jsonStr=pjodata->toString();
                 //设置post请求的参数
-                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDS, jsonStr);
-                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDSIZE, strlen(jsonStr));
+                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDS, jsonStr.c_str());
+                curl_easy_setopt(pcurl, CURLOPT_POSTFIELDSIZE, jsonStr.length());
             }
 
             //设置超时时间
@@ -154,6 +234,8 @@ namespace cg
             {
                 Log::debug("curl_easy_getinfo error");
             }
+            pres->pheader->parse();
+            callback(pres);
 
             curl_slist_free_all(plist);
             curl_easy_cleanup(pcurl);

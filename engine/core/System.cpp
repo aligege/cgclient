@@ -7,6 +7,8 @@
 #include "util/Base64.h"
 #include "Log.h"
 #include <stdlib.h>
+#include <fstream>
+#include <iostream>
 
 using namespace cg;
 
@@ -123,12 +125,18 @@ void System::platformLog(const int type, const char *fmt, va_list args){
     }else if (type == S_LOG_ERROR){
         priority = "ERROR";
     }
-
+    char s[1024]={0};
+    int len=0;
     if ((type == S_LOG_VERBOSE) || (type == S_LOG_DEBUG) || (type == S_LOG_WARN) || (type == S_LOG_ERROR))
-        printf("( %s ): ", priority);
+        len=snprintf(s,sizeof(s),"( %s ): \n", priority);
 
-    vprintf(fmt, args);
-    printf("\n");
+    vsnprintf(s+len,sizeof(s)-len,fmt, args);
+    printf("%s\n",s);
+    std::ofstream fout;
+    fout.open("log.log",std::ios::app);
+    fout<<s<<std::endl;
+    fout.close();
+    return;
 }
 
 bool System::getBoolForKey(const char *key, bool defaultValue){
