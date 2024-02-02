@@ -9,6 +9,13 @@ namespace cg
         Node::_nextId++;
     }
 
+    Node::Node(const std::string& name)
+    {
+        _id = Node::_nextId;
+        Node::_nextId++;
+        _name = name;
+    }
+
     Node::~Node()
     {
         if(_pparent!=nullptr)
@@ -48,9 +55,46 @@ namespace cg
         _position = position;
     }
 
+    void Node::setPosition(float x, float y, float z)
+    {
+        _position.x = x;
+        _position.y = y;
+        _position.z = z;
+    }
+
+    void Node::setPositionX(float x)
+    {
+        _position.x = x;
+    }
+
+    void Node::setPositionY(float y)
+    {
+        _position.y = y;
+    }
+
+    void Node::setPositionZ(float z)
+    {
+        _position.z = z;
+    }
+
     Vector3 Node::getPosition() const
     {
         return _position;
+    }
+
+    float Node::getPositionX() const
+    {
+        return _position.x;
+    }
+
+    float Node::getPositionY() const
+    {
+        return _position.y;
+    }
+
+    float Node::getPositionZ() const
+    {
+        return _position.z;
     }
 
     void Node::setRotation(Vector3 rotation)
@@ -73,14 +117,30 @@ namespace cg
         return _scale;
     }
 
-    void Node::setColor(Vector4 color)
+    void Node::setColor(const Vector4& color)
     {
         _color = color;
     }
 
+    void Node::setColor(const float red, const float green, const float blue, const float alpha)
+    {
+        _color.x = red;
+        _color.y = green;
+        _color.z = blue;
+        _color.w = alpha;
+    }
+    
     Vector4 Node::getColor() const
     {
         return _color;
+    }
+
+    void Node::setAlpha(float alpha){
+        this->_color.w = alpha;
+    }
+
+    float Node::getAlpha() const{
+        return _color.w;
     }
 
     void Node::addComponent(Component* component)

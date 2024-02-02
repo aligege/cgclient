@@ -17,6 +17,7 @@
 
 using namespace cg;
 
+Node* Scene::_ppersist_node=new Node();
 Scene::Scene(){
 	registerComponent<MeshComponent>();
 	registerComponent<ModelComponent>();
@@ -78,6 +79,9 @@ Scene::Scene(){
 	ambientFactor = 0.2;
 
 	enableUIEvents = false;
+	_proot_node = new Node();
+	_proot_node->setName("root");
+	_ppersist_node->setName("persist");
 }
 
 Scene::~Scene(){
@@ -185,6 +189,14 @@ void Scene::setEnableUIEvents(bool enableUIEvents){
 	this->enableUIEvents = enableUIEvents;
 }
 
+void Scene::addNode(Node* pnode, bool persist){
+	if (persist){
+		_ppersist_node->addChild(pnode);
+	}else{
+		_proot_node->addChild(pnode);
+	}
+}
+
 void Scene::load(){
 	if (camera == NULL_ENTITY){
 		camera = createDefaultCamera();
@@ -201,6 +213,7 @@ void Scene::destroy(){
 	for (auto const& pair : systems){
 		pair.second->destroy();
 	}
+	delete _proot_node;
 }
 
 void Scene::draw(){

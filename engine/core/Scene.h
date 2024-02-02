@@ -53,11 +53,16 @@
 #include "component/Body3DComponent.h"
 #include "component/Joint3DComponent.h"
 
+#include "Node.h"
+
 namespace cg{
 
 	class Scene{
 	private:
-
+		//common root node
+		Node* _proot_node;
+		//persist node, used to keep objects between scenes
+		static Node* _ppersist_node;
 		Entity camera;
 		Entity defaultCamera;
 
@@ -82,6 +87,8 @@ namespace cg{
 	
 		Scene();
 		virtual ~Scene();
+
+		void addNode(Node* node,bool persist = false);
 
 		void load();
 		void destroy();

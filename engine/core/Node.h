@@ -25,6 +25,7 @@ namespace cg
             std::vector <Node*> _children;
         public:
             Node();
+            Node(const std::string& name);
             virtual ~Node();
         public:
             //about basic
@@ -37,7 +38,14 @@ namespace cg
             bool isShow() const;
 
             void setPosition(Vector3 position);
+            void setPosition(float x, float y, float z);
+            void setPositionX(float x);
+            void setPositionY(float y);
+            void setPositionZ(float z);
             Vector3 getPosition() const;
+            float getPositionX() const;
+            float getPositionY() const;
+            float getPositionZ() const;
 
             void setRotation(Vector3 rotation);
             Vector3 getRotation() const;
@@ -45,8 +53,12 @@ namespace cg
             void setScale(Vector3 scale);
             Vector3 getScale() const;
 
-            void setColor(Vector4 color);
+            void setColor(const Vector4& color);
+            void setColor(const float red, const float green, const float blue, const float alpha);
             Vector4 getColor() const;
+
+            void setAlpha(float alpha);
+            float getAlpha() const;
 
             //about component
             void addComponent(Component* component);
