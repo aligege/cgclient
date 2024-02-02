@@ -1,0 +1,56 @@
+( DEBUG ): 
+post url-http://10.10.1.41/user/skin/ranks
+headers-Uid:1008611
+postJson-Uid:1008611
+
+( DEBUG ): 
+curl_easy_getinfo success
+( DEBUG ): 
+post url end-http://10.10.1.41/user/skin/ranks
+data-
+
+( DEBUG ): 
+code:400
+data:
+
+( DEBUG ): 
+post url-http://10.10.1.41/user/skin/ranks
+headers-Uid:1008611
+postJson-
+
+( DEBUG ): 
+curl_easy_getinfo success
+( DEBUG ): 
+post url end-http://10.10.1.41/user/skin/ranks
+data-
+
+( DEBUG ): 
+code:400
+data:
+
+( DEBUG ): 
+post url-http://10.10.1.41/user/skin/ranks
+headers-Uid:1008611
+postJson-
+
+( DEBUG ): 
+curl_easy_getinfo success
+( DEBUG ): 
+post url end-http://10.10.1.41/user/skin/ranks
+data-
+
+( DEBUG ): 
+code:400
+data:
+
+( DEBUG ): 
+post url-http://127.0.0.1:6002/logic/login
+headers-Uid:1008611
+postJson-
+
+( DEBUG ): 
+curl_easy_getinfo success
+( DEBUG ): 
+post url end-http://127.0.0.1:6002/logic/login
+data-{"errcode":{"id":10001,"des":"token验证失败"}}
+

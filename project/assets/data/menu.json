@@ -1,0 +1,30 @@
+[
+    {
+        "name": "File",
+        "menus": 
+        [
+            {
+                "name":"Create Scene",
+                "shortcut":"Ctrl+N"
+            },
+            {
+                "name":"Open Scene",
+                "shortcut":"Ctrl+O"
+            }
+        ]
+    },
+    {
+        "name": "Edit",
+        "menus": 
+        [
+            {
+                "name":"Copy",
+                "shortcut":"Ctrl+C"
+            },
+            {
+                "name":"Paste",
+                "shortcut":"Ctrl+V"
+            }
+        ]
+    }
+]

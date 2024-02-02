@@ -261,4 +261,77 @@ namespace cg
         std::string result=key+":"+value;
         return result;
     }
+    bool jsonobject::parse(const char *json)
+    {
+        clear();
+        //解析json字符串为jsonobject
+        //第一种情况"{"开始
+        if (json[0] == '{')
+        {
+            type = EJsonType_Object;
+            data = new std::unordered_map<std::string, jsonobject *>();
+            int index = 1;
+            while (json[index] != '}')
+            {
+                //解析key
+                int index2 = index;
+                while (json[index2] != ':')
+                {
+                    index2++;
+                }
+                std::string key = std::string(json + index, index2 - index);
+                index = index2 + 1;
+                //解析value
+                jsonobject *value = new jsonobject(key.c_str());
+                index2 = index;
+                while (json[index2] != ',' && json[index2] != '}' && json[index2] != ']')
+                {
+                    index2++;
+                }
+                char *valuestr = new char[index2 - index + 1];
+                strncpy(valuestr, json + index, index2 - index);
+                valuestr[index2 - index] = 0;
+                value->parse(valuestr);
+                delete[] valuestr;
+                index = index2 + 1;
+                ((std::unordered_map<std::string, jsonobject *> *)data)->insert(std::make_pair(key, value));
+            }
+            //第二种情况"["开始
+            if(json[0]=='[')
+            {
+                type=EJsonType_Array;
+                data=new std::vector<jsonobject *>();
+                int index=1;
+                while(json[index]!=']')
+                {
+                    jsonobject *value=new jsonobject();
+                    int index2=index;
+                    while(json[index2]!=','&&json[index2]!=']')
+                    {
+                        index2++;
+                    }
+                    char *valuestr=new char[index2-index+1];
+                    strncpy(valuestr,json+index,index2-index);
+                    valuestr[index2-index]=0;
+                    value->parse(valuestr);
+                    delete[] valuestr;
+                    index=index2+1;
+                    ((std::vector<jsonobject *> *)data)->push_back(value);
+                }
+            }
+            //第三种情况是字符串
+            if(json[0]=='"')
+            {
+                type=EJsonType_String;
+                data=new std::string(json+1);
+                int index=1;
+                while(json[index]!='"')
+                {
+                    index++;
+                }
+                ((std::string *)data)->resize(index);
+            }
+        }
+        return false;
+    }
 }

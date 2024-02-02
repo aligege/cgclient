@@ -46,6 +46,7 @@ namespace cg
         EJsonType getType();
         void clear();
         std::string toString();
+        bool parse(const char* json);
     };
 }
 #endif // __JSONOBJECT_H__

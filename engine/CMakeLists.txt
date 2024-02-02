@@ -17,6 +17,7 @@ include_directories(thirdparty/box2d/include/box2d)
 include_directories(thirdparty/joltphysics)
 include_directories(net)
 include_directories(global)
+include_directories(ui)
 
 add_subdirectory(thirdparty/sokol)
 add_subdirectory(thirdparty/lua)
@@ -42,6 +43,7 @@ endif()
 file(GLOB RENDER_SOKOL_SRC renders/sokol/*.cpp)
 file(GLOB_RECURSE CORE_SRCS core/*.cpp)
 file(GLOB NET_SRCS net/*.cpp)
+file(GLOB Ui_Srcs ui/*.cpp)
 
 add_library(libcurl SHARED IMPORTED GLOBAL)
 
@@ -63,6 +65,7 @@ add_library(
     ${RENDER_SOKOL_SRC}
     ${CORE_SRCS}
     ${NET_SRCS}
+    ${Ui_Srcs}
 )
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Emscripten" OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
