@@ -17,7 +17,7 @@
 
 using namespace cg;
 
-Node* Scene::_ppersist_node=new Node();
+Node* Scene::_ppersist_node=new Node("persist");
 Scene::Scene(){
 	registerComponent<MeshComponent>();
 	registerComponent<ModelComponent>();
@@ -79,9 +79,7 @@ Scene::Scene(){
 	ambientFactor = 0.2;
 
 	enableUIEvents = false;
-	_proot_node = new Node();
-	_proot_node->setName("root");
-	_ppersist_node->setName("persist");
+	_proot_node = new Node("root");
 }
 
 Scene::~Scene(){
@@ -216,9 +214,15 @@ void Scene::destroy(){
 	delete _proot_node;
 }
 
-void Scene::draw(){
+void Scene::render(){
 	for (auto const& pair : systems){
 		pair.second->draw();
+	}
+	for( auto const& pnode: _proot_node->getAllChildren()){
+		pnode->render();
+	}
+	for( auto const& pnode: _ppersist_node->getAllChildren()){
+		pnode->render();
 	}
 }
 
@@ -226,6 +230,12 @@ void Scene::draw(){
 void Scene::update(double dt){
 	for (auto const& pair : systems){
 		pair.second->update(dt);
+	}
+	for( auto const& pnode: _proot_node->getAllChildren()){
+		pnode->update(dt);
+	}
+	for( auto const& pnode: _ppersist_node->getAllChildren()){
+		pnode->update(dt);
 	}
 }
 

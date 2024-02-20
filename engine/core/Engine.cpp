@@ -559,7 +559,7 @@ void Engine::systemDraw(){
     Engine::onDraw.call();
 
     for (int i = 0; i < numScenes; i++){
-        scenes[i]->draw();
+        scenes[i]->render();
     }
 
     SystemRender::commit();

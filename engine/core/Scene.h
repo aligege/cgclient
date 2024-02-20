@@ -92,7 +92,10 @@ namespace cg{
 
 		void load();
 		void destroy();
-		void draw();
+		/**
+		 * @brief Render the scene
+		*/
+		void render();
 		void update(double dt);
 
 		void updateSizeFromCamera();

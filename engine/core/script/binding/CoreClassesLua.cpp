@@ -352,7 +352,7 @@ void LuaBinding::registerCoreClasses(lua_State *L){
         .addConstructor <void (*) (void)> ()
         .addFunction("load", &Scene::load)
         .addFunction("destroy", &Scene::destroy)
-        .addFunction("draw", &Scene::draw)
+        .addFunction("draw", &Scene::render)
         .addFunction("update", &Scene::update)
         .addProperty("camera", &Scene::getCamera, &Scene::setCamera)
         .addProperty("backgroundColor", &Scene::getBackgroundColor, (void (Scene::*)(Vector4))&Scene::setBackgroundColor)

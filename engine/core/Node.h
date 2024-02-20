@@ -23,6 +23,11 @@ namespace cg
             std::vector <Component*> _components;
             Node* _pparent=nullptr;
             std::vector <Node*> _children;
+        public :
+            std::vector <Node*> getAllChildren()
+            {
+                return _children;
+            }
         public:
             Node();
             Node(const std::string& name);
@@ -69,7 +74,7 @@ namespace cg
             std::vector<Component*> getComponents(const std::string& name);
             Component* getComponent(const std::string& name);
 
-            //about node
+            //add node
             void addChild(Node* pnode);
             void removeFromParent(bool cleanup=true);
             void removeChild(Node* pnode,bool cleanup=true);
@@ -82,8 +87,9 @@ namespace cg
             Node* getParent() const;
             void setParent(Node* pnode);
             //about update
-            void update(float dt);
-            void fixedUpdate(float dt);
+            void update(double dt);
+            void fixedUpdate(double dt);
+            void render();
     };
 }
 

@@ -382,27 +382,50 @@ namespace cg
         _pparent = pnode;
     }
 
-    void Node::update(float dt)
+    void Node::update(double dt)
     {
         for (auto it = _components.begin(); it != _components.end(); ++it)
         {
-            (*it)->update(dt);
+            if((*it)->isActive())
+            {
+                (*it)->update(dt);
+            }
         }
         for (auto it = _children.begin(); it != _children.end(); ++it)
         {
-            (*it)->update(dt);
+            if((*it)->isShow())
+            {
+                (*it)->update(dt);
+            }
         }
     }
 
-    void Node::fixedUpdate(float dt)
+    void Node::fixedUpdate(double dt)
     {
         for (auto it = _components.begin(); it != _components.end(); ++it)
         {
-            (*it)->fixedUpdate(dt);
+            if((*it)->isActive())
+            {
+                (*it)->fixedUpdate(dt);
+            }
         }
         for (auto it = _children.begin(); it != _children.end(); ++it)
         {
-            (*it)->fixedUpdate(dt);
+            if((*it)->isShow())
+            {
+                (*it)->fixedUpdate(dt);
+            }
+        }
+    }
+
+    void Node::render()
+    {
+        for (auto it = _children.begin(); it != _children.end(); ++it)
+        {
+            if((*it)->isShow())
+            {
+                (*it)->render();
+            }
         }
     }
 }
