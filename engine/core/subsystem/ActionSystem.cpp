@@ -634,7 +634,7 @@ void ActionSystem::destroy(){
     }
 }
 
-void ActionSystem::draw(){
+void ActionSystem::render(){
 
 }
 

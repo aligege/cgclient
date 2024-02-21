@@ -139,7 +139,7 @@ namespace cg{
 		void drawTerrainDepth(TerrainComponent& terrain, vs_depth_t vsDepthParams);
 		void destroyTerrain(Entity entity, TerrainComponent& terrain);
 
-		void drawUI(UIComponent& uirender, Transform& transform, bool renderToTexture);
+		void renderUI(UIComponent& uirender, Transform& transform, bool renderToTexture);
 		void destroyUI(Entity entity, UIComponent& uirender);
 
 		void drawParticles(ParticlesComponent& particles, Transform& transform, Transform& camTransform, bool renderToTexture);
@@ -181,7 +181,7 @@ namespace cg{
 	
 		virtual void load();
 		virtual void destroy();
-		virtual void draw();
+		virtual void render();
 		virtual void update(double dt);
 
 		virtual void entityDestroyed(Entity entity);

@@ -1670,7 +1670,7 @@ void PhysicsSystem::update(double dt){
     
 }
 
-void PhysicsSystem::draw(){
+void PhysicsSystem::render(){
 
 }
 

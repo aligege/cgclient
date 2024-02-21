@@ -1291,7 +1291,7 @@ bool RenderSystem::loadUI(Entity entity, UIComponent& uirender, bool isText){
 	return true;
 }
 
-void RenderSystem::drawUI(UIComponent& uirender, Transform& transform, bool renderToTexture){
+void RenderSystem::renderUI(UIComponent& uirender, Transform& transform, bool renderToTexture){
 	if (uirender.loaded && uirender.buffer.getSize() > 0){
 
 		if (uirender.needUpdateTexture || uirender.texture.isFramebufferOutdated()){
@@ -2591,7 +2591,7 @@ void RenderSystem::update(double dt){
 	processLights(mainCameraTransform);
 }
 
-void RenderSystem::draw(){
+void RenderSystem::render(){
 	std::priority_queue<TransparentMeshesData, std::vector<TransparentMeshesData>, MeshComparison> transparentMeshes;
 
 	auto transforms = scene->getComponentArray<Transform>();
@@ -2771,7 +2771,7 @@ void RenderSystem::draw(){
 					isText = true;
 				}
 				if (transform.visible)
-					drawUI(ui, transform, camera.renderToTexture);
+					renderUI(ui, transform, camera.renderToTexture);
 
 			}else if (signature.test(scene->getComponentType<ParticlesComponent>())){
 				ParticlesComponent& particles = scene->getComponent<ParticlesComponent>(entity);

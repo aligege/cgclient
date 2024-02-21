@@ -726,7 +726,7 @@ void UISystem::destroy(){
     }
 }
 
-void UISystem::draw(){
+void UISystem::render(){
 }
 
 void UISystem::createOrUpdateUiComponent(double dt, UILayoutComponent& layout, Entity entity, Signature signature){

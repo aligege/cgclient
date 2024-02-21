@@ -46,7 +46,7 @@ namespace cg{
 		virtual void load();
 		virtual void destroy();
         virtual void update(double dt);
-		virtual void draw();
+		virtual void render();
 
 		virtual void entityDestroyed(Entity entity);
 	};

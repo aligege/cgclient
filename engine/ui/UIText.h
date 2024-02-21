@@ -21,19 +21,25 @@ namespace cg{
             unsigned int minBufferCount = 0;
             unsigned int minIndicesCount = 0;
             unsigned int maxTextSize = 100;
-            STBText stbtext;
+            Texture texture;
+            std::shared_ptr<STBText> stbtext=nullptr;
             std::vector<Vector2> charPositions;
-            std::string text;
-            int width;
-            int height; 
-            int fixedWidth; 
-            int fixedHeight;
-            int multiline;
+            std::string text = "";
+            std::string font = "";
+            unsigned int fontSize = 30;
+            int width=200;
+            int height=100; 
+            bool fixedWidth=false; 
+            bool fixedHeight=false;
+            bool multiline=false;
             bool flipY=false;
+            bool needUpdateTexture = false;
         public:
             UIText();
+            UIText(std::string text);
         public:
             void init();
+            bool loadFontAtlas();
     };
 }
 

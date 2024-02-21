@@ -2299,7 +2299,7 @@ void MeshSystem::update(double dt){
 
 }
 
-void MeshSystem::draw(){
+void MeshSystem::render(){
 
 }
 

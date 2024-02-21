@@ -211,12 +211,20 @@ void Scene::destroy(){
 	for (auto const& pair : systems){
 		pair.second->destroy();
 	}
-	delete _proot_node;
+	if(this->_proot_node!=nullptr)
+	{
+		delete _proot_node;
+	}
+	else
+	{
+		Log::error("Scene::_proot_node is nullptr");
+	}
+	_proot_node=nullptr;
 }
 
 void Scene::render(){
 	for (auto const& pair : systems){
-		pair.second->draw();
+		pair.second->render();
 	}
 	for( auto const& pnode: _proot_node->getAllChildren()){
 		pnode->render();

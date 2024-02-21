@@ -269,7 +269,7 @@ void AudioSystem::update(double dt){
     }
 }
 
-void AudioSystem::draw(){
+void AudioSystem::render(){
 
 }
 
