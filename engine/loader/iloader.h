@@ -1,24 +1,28 @@
 #pragma once
 #include <string>
-class iloader
+
+namespace cg
 {
-    public:
-        /**
-         * @brief Construct a new iloader object
-        */
-        iloader() = default;
+    class iloader
+    {
+        public:
+            /**
+             * @brief Construct a new iloader object
+            */
+            iloader() = default;
 
-        /**
-         * @brief Destroy the iloader object
-        */
-        virtual ~iloader() = default;
+            /**
+             * @brief Destroy the iloader object
+            */
+            virtual ~iloader() = default;
 
-        /**
-         * @brief Load the file
-         * 
-         * @param filename The file to load
-         * @return true If the file was loaded
-         * @return false If the file was not loaded
-        */
-        virtual void* load(const std::string&  filename) = 0;
-};
+            /**
+             * @brief Load the file
+             * 
+             * @param filename The file to load
+             * @return true If the file was loaded
+             * @return false If the file was not loaded
+            */
+            virtual void* load(std::string filename) = 0;
+    };
+}

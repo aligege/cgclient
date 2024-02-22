@@ -4,6 +4,7 @@
       "name": "GCC",
       "includePath": [
         "${workspaceFolder}/**",
+        "${workspaceFolder}/engine/**",
         "${workspaceFolder}/engine/third_party/include/**"
       ],
       "defines": [

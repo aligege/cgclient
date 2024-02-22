@@ -1,6 +1,7 @@
 #include<glad/glad.h> //glad的引入必须要在glfw的上面
 #include<glfw/glfw3.h>
 #include<iostream>
+#include "global.h"
 
 using namespace std;
 
@@ -18,6 +19,9 @@ void renderOrder();
 int main() {
 	int argc = 0;
 	char** argv = nullptr;
+	cout << "v8engine progaming init start......" << "\n";
+	auto ret = cg::global::v8engine.init();
+	cout << "v8engine progaming init end......" << "\n";
 	cout << "opengl progaming start......" << "\n";
 	//函数库的初始化
 	glfwInit();
