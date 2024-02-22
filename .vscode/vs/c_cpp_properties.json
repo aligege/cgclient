@@ -4,8 +4,7 @@
         "name": "Win32",
         "includePath": [
           "${workspaceFolder}/**",
-          "${workspaceFolder}/include/**",
-          "${workspaceFolder}/include/v8/**",
+          "${workspaceFolder}/third_party/**",
           "${workspaceFolder}/lib/**"
         ],
         "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
@@ -13,7 +12,7 @@
         "compilerPath": "D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.35.32215/bin/Hostx64/x64/cl.exe",
         "cStandard": "c11",
         "cppStandard": "c++17",
-        "intelliSenseMode": "msvc-x64"
+        "intelliSenseMode": "windows-msvc-x64"
       }
     ],
     "version": 4

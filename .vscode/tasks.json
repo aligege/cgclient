@@ -7,17 +7,14 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-I",
-                "${workspaceFolder}\\include",
-                "-I",
-                "${workspaceFolder}\\third_party",
+                "${workspaceFolder}\\engine\\third_party\\include",
                 "-I",
                 "${workspaceFolder}",
                 "-g",
                 "${workspaceFolder}/*.cpp",
-                "${workspaceFolder}\\lib\\GLFW\\mingw-w64\\**.a",
-                "${workspaceFolder}\\lib\\**.c",
-                "${workspaceFolder}\\third_party\\tinygltf\\**.h",
-                "${workspaceFolder}\\third_party\\tinygltf\\**.hpp",
+                "${workspaceFolder}\\engine\\third_party\\lib\\GLFW\\mingw-w64\\**.a",
+                "${workspaceFolder}\\engine\\third_party\\lib\\v8\\win-x64\\debug\\v8.dll.lib",
+                "${workspaceFolder}\\engine\\third_party\\lib\\**.c",
                 "-l",
                 "opengl32",
                 "-l",
@@ -33,7 +30,7 @@
             ],
             "group": "build",
             "detail": "编译器: C:\\msys64\\ucrt64\\bin\\g++.exe"
-        },
+        }
     ],
     "version": "2.0.0"
 }
