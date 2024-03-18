@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _global_h_
+#define _global_h_
+
 #include "core/core.h"
 #include "loader/loadertool.h"
 #include "core/log.h"
@@ -15,3 +17,5 @@ namespace cg
             static v8engine v8engine;
     };
 }
+
+#endif

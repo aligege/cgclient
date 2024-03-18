@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _core_h_
+#define _core_h_
 
 #include <string>
 
@@ -20,3 +21,5 @@ namespace cg
             }
     };
 }
+
+#endif
